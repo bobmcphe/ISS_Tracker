@@ -7,7 +7,6 @@ const superagent = require('superagent');
 const pg = require('pg');
 const cors = require('cors');
 const morgan = require('morgan');
-const { response } = require('express');
 
 
 
@@ -26,6 +25,8 @@ app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static('./public'));
+
+const client = new pg.Client(process.env.DATABASE_URL);
 
 // ----------------------------------------------
 // Route Definitions
