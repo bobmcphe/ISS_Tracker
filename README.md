@@ -22,3 +22,13 @@ Install the following dependencies: express, cors, pg, ejs, dotenv, morgan (opti
 1. Cors - lets us deal with cross broswer scripting and access
 1. pg - allows us to create and access SQL database
 1. Superagent - necessary to access an API
+
+
+## Domain Modeling
+![I am the link for the domain mapping image, I hope?](assets/domain-model.jpeg)
+
+## Entity Relationship Diagram
+
+
+## Wireframes
+![I am the link for the wireframe image, I hope?](assets/wireframe.jpg)
