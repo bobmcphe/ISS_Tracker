@@ -28,7 +28,7 @@ Install the following dependencies: express, cors, pg, ejs, dotenv, morgan (opti
 ![I am the link for the domain mapping image, I hope?](assets/domain-model.jpeg)
 
 ## Entity Relationship Diagram
-
+this is a test to make sure github is good
 
 ## Wireframes
-![I am the link for the wireframe image, I hope?](assets/wireframe.jpg)
+![I am the link for the wireframe image, I hope?](assets/wireframe.jpeg)
