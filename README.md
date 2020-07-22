@@ -30,7 +30,7 @@ Install the following dependencies: express, cors, pg, ejs, dotenv, morgan (opti
 ![I am the link for the domain mapping image, I hope?](assets/domain-model.jpeg)
 
 ## Databse Entity Relationship 
-(Diagram)
+![Diagram](assets/savedTracker-ex.png)
 
 We have a database, ISS_Tracker, with one table,  savedTracker.  The table is used to save login name and city.  Users are required to enter these 2 pieces of info before they can access the site.
 
