@@ -42,12 +42,12 @@ Stretch: we may provide the user the ability to save Astronomy Pics of the Day u
 
 
 ## Wireframes
-![I am the link for the wireframe image for the Landing Page, I hope?](assets/wireframes/LP.png)
+![Link to Landing Page](assets/wireframes/LP.png)
 
-![I am the link for the wireframe image for the Landing Page, I hope?](assets/wireframes/Basic-User.png)
+![Link to Basic User Page](assets/wireframes/Basic-User.png)
 
-![I am the link for the wireframe image for the Landing Page, I hope?](assets/wireframes/Radio-User.png)
+![Link to Radio User Page](assets/wireframes/Radio-User.png)
 
-![I am the link for the wireframe image for the Landing Page, I hope?](assets/wireframes/Info.png)
+![Link to Info Page](assets/wireframes/Info.png)
 
-![I am the link for the wireframe image for the Landing Page, I hope?](assets/wireframes/About-Us.png)
+![Link to About Us Page](assets/wireframes/About-Us.png)
