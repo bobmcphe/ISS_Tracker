@@ -1,5 +1,12 @@
+
+@import "/public/styles/reset.css"; 
+@import "/public/styles/base.css"; 
+@import "/public/styles/modules.css"; 
+@import "/public/styles/layout.css"; 
+
+
 /* below is proof of life test */
 
 body{
-    background-color: aliceblue;
+    background-color: red;
 }
