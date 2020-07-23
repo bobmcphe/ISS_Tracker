@@ -13,6 +13,7 @@ Install the following dependencies: express, cors, pg, ejs, dotenv, morgan (opti
 1. Setup your database.
 1. You might need to set up your schema file?
 1. Run code with localhost:port in your browser, where `port` = whatever you set your port to.
+
 ## Architecture
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
 1. HTML
@@ -28,6 +29,7 @@ Install the following dependencies: express, cors, pg, ejs, dotenv, morgan (opti
 
 ## Domain Modeling
 ![I am the link for the domain mapping image, I hope?](assets/domain-model.jpeg)
+
 
 ## Databse Entity Relationship 
 ![Diagram](assets/savedTracker-ex.png)
@@ -51,3 +53,4 @@ Stretch: we may provide the user the ability to save Astronomy Pics of the Day u
 ![I am the link for the wireframe image for the Landing Page, I hope?](assets/wireframes/Info.png)
 
 ![I am the link for the wireframe image for the Landing Page, I hope?](assets/wireframes/About-Us.png)
+ 
