@@ -30,14 +30,14 @@
         <div class="passTimesTemplate">
             <ul>
 
-                <%  for (var x of x's) {%> <!-- TODO need to determine names -->
-                <li class="day">Day: <%= book.day  %> </li>
-                <li class="time">Time: <%= book.time  %> </li>
+                <!-- <%  for (var x of x's) {%> <!-- TODO need to determine names -->
+                <!-- <li class="day">Day: <%= x.day  %> </li>
+                <li class="time">Time: <%= x.time  %> </li> -->
     
-                    <form method="get" action="/?????">  <!-- TODO need to determine the route -->
+                    <form method="get" action="/basic/results">  <!-- TODO doublecheck route -->
     
-                    <input type="hidden" name="day" value="<%=book.day%>"> 
-                    <input type="hidden" name="time" value="<%=book.time%>"> 
+                    <input type="hidden" name="day" value="<%=x.day%>"> 
+                    <input type="hidden" name="time" value="<%=x.time%>">  -->
                     <button type="submit">See My Passes</button>
                 </form>
                 <% } %>
