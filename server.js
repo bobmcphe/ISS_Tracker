@@ -39,7 +39,7 @@ const client = new pg.Client(DATABASE_URL);
 app.get('/', handleHome); //landing page
 app.post('/basic', handleBasic); // basic user page
 app.get('/basic/results', handleResults); //displays results after 'get iss passes button'
-// app.get('/aboutus', handleAboutUs); //about us page
+app.get('/aboutus', handleAboutUs); //about us page
 // app.get('/info', handleInfo); //info page
 app.use('*', noFindHandler); // 404 route doesnt exist
 app.use(errorHandler); //errors
@@ -64,12 +64,7 @@ function handleBasic (req, res){
         });
 }
 
-function Location (obj, query){
-    this.search_query = query;
-    this.formatted_query = obj.display_name;
-    this.latitude = obj.lat;
-    this.longitude = obj.lon;
-}
+
 
 function handleResults (req, res){
     const API_Geocode ='https://us1.locationiq.com/v1/search.php';
@@ -101,6 +96,20 @@ function handleResults (req, res){
         });
 }
 
+function Location (obj, query){
+    this.search_query = query;
+    this.formatted_query = obj.display_name;
+    this.latitude = obj.lat;
+    this.longitude = obj.lon;
+}
+
+function handleAboutUs (req, res){
+    res.render('aboutUs');
+}
+
+function handleInfo (req, res){
+    res.render('info');
+}
 
 function noFindHandler(req, res){
     res.status(404).send('Sorry, cannot find what you are looking for');
