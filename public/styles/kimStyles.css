@@ -1,37 +1,36 @@
 body {
-    background-color: grey;
+  background-color: grey;
 }
 
 
 nav ul {
-    display: flex;
-    margin: 30px auto 30px 100px;
+  display: flex;
+  margin: 30px auto 30px 100px;
 }
 
 a {
-    margin: auto 30px;
-    font-size: medium;
-    text-decoration: none; 
-    color: whitesmoke; 
+  margin: auto 30px;
+  font-size: medium;
+  text-decoration: none; 
+  color: whitesmoke; 
 }
 
 a:hover{
-    color: black;
+  color: black;
 }
 
 .mediumImage {
-    display: inline-flex;
-    justify-content: space-evenly;
-    max-height: 250px;
+  width: 150px;
 }
 
-/* #astroBios {
-    display: inline-flex;
-
-} */
+#astroBios, #cosmonauts{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
 
 footer, footer a{
-    line-height: 1.5;
-    margin: 30px auto 30px 50px;
-    text-align: left;
+  line-height: 1.5;
+  margin: 30px auto 30px 50px;
+  text-align: left;
 }
