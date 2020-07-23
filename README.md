@@ -31,4 +31,4 @@ Install the following dependencies: express, cors, pg, ejs, dotenv, morgan (opti
 
 
 ## Wireframes
-![I am the link for the wireframe image, I hope?](assets/wireframe.jpg)
+![I am the link for the wireframe image, I hope?](assets/wireframe.jpeg)
