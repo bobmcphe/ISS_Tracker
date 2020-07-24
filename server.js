@@ -117,7 +117,7 @@ function handleResults (req, res){
     const API_issCurrentLocation = 'http://api.open-notify.org/iss-now.json';
     const API_Geocode ='https://us1.locationiq.com/v1/search.php';
     const API_weather = 'https://api.weatherbit.io/v2.0/current'
-    // const API_issPasses = 'http://api.open-notify.org/iss-pass.json';
+    const API_issPasses = 'http://api.open-notify.org/iss-pass.json';
     
     // ----------------------------------------------
     // API query parameters
@@ -145,12 +145,11 @@ function handleResults (req, res){
     const api2 = superagent.get(API_issCurrentLocation);
     const api3 = superagent.get(API_Geocode).query(cityParameters);
     const api4 = superagent.get(API_weather).query(weatherParameters);
-    // const api5 = superagent.get(API_issPasses).query(passesParameters);
 
 
     Promise.all([api1, api2, api3, api4])
       .then( data => {
-        console.log(data[3].body);
+        
         //run APOD data through Constructor
         const astronamyPic = new APOD(data[0].body);
 
@@ -163,13 +162,24 @@ function handleResults (req, res){
         //run weather data based on inputted city through Constructor
         let weatherData = new Weather(data[3].body);
 
+        //Now that we have location lat and lon (from cityData) we can run our query for ISS pass info
+
+        const passesParameters = {
+            lat: cityData.lat,
+            lon: cityData.lon,
+          };
+
+        superagent.get(API_issPasses)
+              .query(passesParameters)
+              .then( data => {
+                  console.log('return data', data.body);
+                let passData = new Passes(data.body);
+                console.log('passData', passData);
+              });
+
+
         //run ISS pass data based on inputted city through Constructor
         // let passData = new Passes(data[1].body);
-
-        console.log('ASPOD:', astronamyPic);
-        console.log('Postion:', issPosition);
-        console.log('City Data:', cityData);
-        console.log('Weather:', weatherData);
     
         
       })
@@ -189,19 +199,19 @@ function handleResults (req, res){
     //         let cityData = new Location(data.body[0],req.query.city);
     //         const API_issPasses = 'http://api.open-notify.org/iss-pass.json';
         
-    //         const passesParameters = {
-    //             lat: cityData.lat,
-    //             lon: cityData.lon,
-    //           };
+            // const passesParameters = {
+            //     lat: cityData.lat,
+            //     lon: cityData.lon,
+            //   };
         
-    //         superagent.get(API_issPasses)
-    //           .query(passesParameters)
-    //           .then( data => {
-    //               console.log('return data', data.body);
-    //             let passData = new Passes(data.body);
-    //             console.log('passData', passData);
-    //           })
-    //     });
+            // superagent.get(API_issPasses)
+            //   .query(passesParameters)
+            //   .then( data => {
+            //       console.log('return data', data.body);
+            //     let passData = new Passes(data.body);
+            //     console.log('passData', passData);
+            //   })
+        // });
 
 
     // const API_issCurrentLocation = 'http://api.open-notify.org/iss-now.json';
