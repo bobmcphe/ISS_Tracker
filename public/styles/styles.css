@@ -1,12 +1,9 @@
 
-@import "styles/reset.css"; 
-@import "styles/base.css"; 
-@import "styles/modules.css"; 
-@import "styles/layout.css"; 
+@import "reset.css"; 
+@import "base.css"; 
+@import "modules.css"; 
+@import "layout.css"; 
 
-
-/* below is proof of life test */
-/* Sorry, Bobby....the red was burning my eyeballs =P */
 
 body{
     background-color: grey;
@@ -59,4 +56,14 @@ input {
 @keyframes spin {
   from {transform:rotate(0deg);}
   to {transform:rotate(360deg);}
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
 }
