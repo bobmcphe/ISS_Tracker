@@ -90,6 +90,8 @@ function handleResults (req, res){
     const API_Geocode ='https://us1.locationiq.com/v1/search.php';
     const API_issPasses = 'http://api.open-notify.org/iss-pass.json';
     const API_issCurrentLocation = 'http://api.open-notify.org/iss-now.json';
+    const API_weather = 'https://api.weatherbit.io/v2.0/current'
+    const API_apod = 'https://api.nasa.gov/planetary/apod';
 
     // ----------------------------------------------
     // API query parameters
@@ -103,6 +105,10 @@ function handleResults (req, res){
     const weatherParameters = {
         city: req.query.city,
         key: WEATHER
+    };
+
+    const nasaParameters = {
+        key: NASA_KEY
     };
 
     // ----------------------------------------------
