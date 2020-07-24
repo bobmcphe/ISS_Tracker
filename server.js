@@ -59,6 +59,17 @@ function Passes(obj){
     this.risetime = obj.response[0].risetime;
 }
 
+function Weather(obj){
+
+}
+
+function APOD(obj){
+    this.copyright = obj.copyright;
+    this.date = obj.date;
+    this.title = obj.title;
+    this.url = obj.hdurl;
+}
+
 // ----------------------------------------------
 // Route Functions
 // ----------------------------------------------
@@ -114,20 +125,23 @@ function handleResults (req, res){
     // ----------------------------------------------
     // API Queries with parameters
     // ----------------------------------------------
-    const api1 = superagent.get(API_Geocode).query(cityParameters);
-    // const api2 = superagent.get(API_issPasses).query(passesParameters);
-    const api3 = superagent.get(API_issCurrentLocation);
-    // const api4 = superagent.get(API_issPasses).query(passesParameters);
+    const api1 = superagent.get(API_apod).query(nasaParameters);
+    const api2 = superagent.get(API_issCurrentLocation);
+    const api3 = superagent.get(API_Geocode).query(cityParameters);
+    const api4 = superagent.get(API_weather).query(weatherParameters);
+    const api5 = superagent.get(API_issPasses).query(passesParameters);
 
 
-    Promise.all([api1, api2,api3])
+    Promise.all([api1, api2, api3, api4])
       .then( data => {
-        const cityData = new Location(data[0].body[0],req.query.city);
         const issPosition = {
             lat: data[1].body.iss_position.latitude,
             long: data[1].body.iss_position.longitude
-        }
-        // let passData = new Passes(data[1].body);
+        };  
+        const cityData = new Location(data[2].body[0],req.query.city);
+        
+        let passData = new Passes(data[1].body);
+        // 
         
       })
     
