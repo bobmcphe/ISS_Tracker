@@ -1,40 +1,238 @@
-body {
-  background-color: grey;
+
+  body {
+    background-color: yellow;
+  }
+
+
+  nav ul {
+    display: flex;
+    margin: 30px auto 30px 100px;
+    background-color: gray;
+    height: 50px;
+    margin-top: 0px;
+    margin-left: 0%;
+  }
+
+  /* nav {
+    padding-left: 0%;
+    padding-top: 0%;
+  } */
+
+  a {
+    margin: auto 30px;
+    font-size: large;
+    text-decoration: none; 
+    color: whitesmoke; 
+  }
+
+  nav ul a {
+    line-height: 50px;
+    font: large;
+    }
+
+  a:hover{
+    color: black;
+  }
+
+  .mediumImage {
+    width: 150px;
+    border: gray solid 3px;
+    border-radius: 3px;
+  }
+
+  div{
+    
+    width: 200px;
+    margin: 0 auto;
+  }
+
+  #astroBios, #cosmonauts{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+  }
+
+  footer p{
+    line-height: 1.5;
+    /* margin: 10px auto 30px 20px; */
+    text-align: left;
+  }
+
+
+  footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+  }
+
+
+  footer a {
+    font-size: large;
+    margin-top: 30px;
+    line-height: 50px;
+  }
+
+  footer a:hover {
+    font-size: large;
+    color: grey;
+    padding-top: 25px;
+    margin-top: 50px;
+  }
+
+  footer ul li {
+    width: 600px;
+    display: inline-block;
+  }
+
+
+@media screen and (min-device-width: 1000px) { 
+  body {
+    background-color: red;
+  }
+
+
+  nav ul {
+    display: flex;
+    margin: 30px auto 30px 100px;
+  }
+
+  a {
+    margin: auto 30px;
+    font-size: medium;
+    text-decoration: none; 
+    color: whitesmoke; 
+  }
+
+  a:hover{
+    color: black;
+  }
+
+  .mediumImage {
+    width: 150px;
+  }
+
+  div{
+    
+    width: 200px;
+    margin: 0 auto;
+  }
+
+  #astroBios, #cosmonauts{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+  }
+
+  footer p{
+    line-height: 1.5;
+    margin: 10px auto 30px 20px;
+    text-align: left;
+  }
+
+
+  footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+  }
+
+
+  footer a {
+    font-size: large;
+    margin-top: 30px;
+  }
+
+  footer a:hover {
+    font-size: large;
+    color: grey;
+    padding-top: 25px;
+    margin-top: 50px;
+  }
+}
+
+  @media screen and (min-device-width: 900px) { 
+  body {
+    background-color: pink;
+  }
+
+
+  nav ul {
+    display: flex;
+    margin: 30px auto 30px 100px;
+    margin-top: 0%;
+    margin-left: 0%;
+  }
+
+  a {
+    margin: auto 30px;
+    font-size: medium;
+    text-decoration: none; 
+    color: whitesmoke; 
+  }
+
+  a:hover{
+    color: black;
+  }
+
+  .mediumImage {
+    width: 150px;
+  }
+
+  div{
+    
+    width: 200px;
+    margin: 0 auto;
+  }
+
+  #astroBios, #cosmonauts{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+  }
+
+  footer p{
+    line-height: 1.5;
+    margin: 10px auto 30px 20px;
+    text-align: left;
+  }
+
+
+  footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+  }
+
+
+  footer a {
+    font-size: large;
+    margin-top: 30px;
+  }
+
+  footer a:hover {
+    font-size: large;
+    color: grey;
+    padding-top: 25px;
+    margin-top: 50px;
+  }
 }
 
 
-nav ul {
-  display: flex;
-  margin: 30px auto 30px 100px;
-}
 
-a {
-  margin: auto 30px;
-  font-size: medium;
-  text-decoration: none; 
-  color: whitesmoke; 
-}
 
-a:hover{
-  color: black;
-}
 
-.mediumImage {
-  width: 150px;
-}
-
-#astroBios, #cosmonauts{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-footer p{
-  line-height: 1.5;
-  margin: 10px auto 30px 20px;
-  text-align: left;
-}
-
-footer {
-  margin-top: 100px;
-}
