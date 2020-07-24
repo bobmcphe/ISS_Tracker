@@ -63,10 +63,10 @@ function Passes(obj){
 function Weather(obj){
     this.weatherIconURL = `https://www.weatherbit.io/static/img/icons/${obj.data[0].weather.icon}.png`
     this.description = obj.data[0].weather.description;
-    this.sunrise = obj.data[13].sunrise;
-    this.sunset = obj.data[14].sunrise;
-    this.temp = ((obj.data[15].temp * 9/5) + 32);
-    this.elevationAngle = obj.data[5].elev_angle;
+    this.sunrise = obj.data[0].sunrise;
+    this.sunset = obj.data[0].sunset;
+    this.temp = ((obj.data[0].temp * 9/5) + 32);
+    this.elevationAngle = obj.data[0].elev_angle;
 
 }
 
@@ -80,8 +80,8 @@ function APOD(obj){
 
 //constructor function that takes in ISS Location info
 function ISSLocation(obj){
-    this.lat = obj.iss_position.lat;
-    this.lon = obj.iss_position.lon;
+    this.lat = obj.iss_position.latitude;
+    this.lon = obj.iss_position.longitude;
 }
 
 // ----------------------------------------------
@@ -148,9 +148,9 @@ function handleResults (req, res){
     // const api5 = superagent.get(API_issPasses).query(passesParameters);
 
 
-    Promise.all([api1, api2])
+    Promise.all([api1, api2, api3, api4])
       .then( data => {
-        console.log(data);
+        console.log(data[3].body);
         //run APOD data through Constructor
         const astronamyPic = new APOD(data[0].body);
 
@@ -158,18 +158,18 @@ function handleResults (req, res){
         const issPosition = new ISSLocation(data[1].body);
 
         //run Location data through Constructor
-        // const cityData = new Location(data[2].body[0],req.query.city);
+        const cityData = new Location(data[2].body[0],req.query.city);
 
         //run weather data based on inputted city through Constructor
-        // let weatherData = new Weather(data[3].body);
+        let weatherData = new Weather(data[3].body);
 
         //run ISS pass data based on inputted city through Constructor
         // let passData = new Passes(data[1].body);
 
         console.log('ASPOD:', astronamyPic);
         console.log('Postion:', issPosition);
-        // console.log('City Data:', cityData);
-        // console.log('Weather:', weatherData);
+        console.log('City Data:', cityData);
+        console.log('Weather:', weatherData);
     
         
       })
