@@ -73,47 +73,86 @@ function handleBasic (req, res){
 
     let values= [req.body.name, req.body.city]; // stores username and city values that were entered
 
-    console.log('values', values);
-
     client.query(SQL, values) //sends it to the DB
-        .then( results => {
-            console.log(results);
+        .then( () => {
             res.render('pages/basicUser', {city: req.body.city});
         })
         .catch (error => {
             console.log('error from catch', error);
         });
-            // res.render('pages/basicUser', {city: req.body.city});
 }
 
 function handleResults (req, res){
-    const API_Geocode ='https://us1.locationiq.com/v1/search.php';
 
+    // ----------------------------------------------
+    // API URLs
+    // ----------------------------------------------
+    const API_Geocode ='https://us1.locationiq.com/v1/search.php';
+    const API_issPasses = 'http://api.open-notify.org/iss-pass.json';
+    const API_issCurrentLocation = 'http://api.open-notify.org/iss-now.json';
+
+    // ----------------------------------------------
+    // API query parameters
+    // ----------------------------------------------
     const cityParameters = {
-      key:GEOCODE,
-      q: req.query.city,
-      format: 'json',
+        key:GEOCODE,
+        q: req.query.city,
+        format: 'json'
+      };
+
+    const weatherParameters = {
+        city: req.query.city,
+        key: WEATHER
     };
 
-    superagent.get(API_Geocode)
-        .query(cityParameters)
-        .then( data => {
-            let cityData = new Location(data.body[0],req.query.city);
-            const API_issPasses = 'http://api.open-notify.org/iss-pass.json';
+    // ----------------------------------------------
+    // API Queries with parameters
+    // ----------------------------------------------
+    const api1 = superagent.get(API_Geocode).query(cityParameters);
+    // const api2 = superagent.get(API_issPasses).query(passesParameters);
+    const api3 = superagent.get(API_issCurrentLocation);
+    // const api4 = superagent.get(API_issPasses).query(passesParameters);
+
+
+    Promise.all([api1, api2,api3])
+      .then( data => {
+        const cityData = new Location(data[0].body[0],req.query.city);
+        const issPosition = {
+            lat: data[1].body.iss_position.latitude,
+            long: data[1].body.iss_position.longitude
+        }
+        // let passData = new Passes(data[1].body);
         
-            const passesParameters = {
-                lat: cityData.lat,
-                lon: cityData.lon,
-              };
+      })
+    
+    //***************************************************************/
+    // const API_Geocode ='https://us1.locationiq.com/v1/search.php';
+
+    // const cityParameters = {
+    //   key:GEOCODE,
+    //   q: req.query.city,
+    //   format: 'json',
+    // };
+
+    // superagent.get(API_Geocode)
+    //     .query(cityParameters)
+    //     .then( data => {
+    //         let cityData = new Location(data.body[0],req.query.city);
+    //         const API_issPasses = 'http://api.open-notify.org/iss-pass.json';
         
-            superagent.get(API_issPasses)
-              .query(passesParameters)
-              .then( data => {
-                  console.log('return data', data.body);
-                let passData = new Passes(data.body);
-                console.log('passData', passData);
-              })
-        });
+    //         const passesParameters = {
+    //             lat: cityData.lat,
+    //             lon: cityData.lon,
+    //           };
+        
+    //         superagent.get(API_issPasses)
+    //           .query(passesParameters)
+    //           .then( data => {
+    //               console.log('return data', data.body);
+    //             let passData = new Passes(data.body);
+    //             console.log('passData', passData);
+    //           })
+    //     });
 
 
     // const API_issCurrentLocation = 'http://api.open-notify.org/iss-now.json';
@@ -127,7 +166,7 @@ function handleResults (req, res){
     //         }
             
     //     });
-    res.render('pages/results');
+    // res.render('pages/results');
 }
 
 
