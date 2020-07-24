@@ -29,8 +29,12 @@ a:hover{
   justify-content: space-around;
 }
 
-footer, footer a{
+footer p{
   line-height: 1.5;
-  margin: 30px auto 30px 50px;
+  margin: 10px auto 30px 20px;
   text-align: left;
+}
+
+footer {
+  margin-top: 100px;
 }
