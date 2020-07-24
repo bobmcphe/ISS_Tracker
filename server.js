@@ -55,8 +55,8 @@ function Location (obj, query){
 
 //constructor function that takes in ISS Pass info
 function Passes(obj){
-    this.duration = obj.response[0].duration;
-    this.risetime = obj.response[0].risetime;
+    this.duration = obj.duration;
+    this.risetime = obj.risetime;
 }
 
 //constructor function that takes in Weather info
@@ -171,61 +171,15 @@ function handleResults (req, res){
 
         superagent.get(API_issPasses)
               .query(passesParameters)
-              .then( data => {
-                  console.log('return data', data.body);
-                let passData = new Passes(data.body);
-                console.log('passData', passData);
+              .then(data => {
+                let passData = data.body.response.map(pass => {
+                    return new Passes(pass);
+                });
+                res.render('pages/results',{ pic:astronamyPic, issPosition:issPosition, location:cityData, weather: weatherData, issPasses: passData });
               });
 
-
-        //run ISS pass data based on inputted city through Constructor
-        // let passData = new Passes(data[1].body);
-    
-        
       })
     
-    //***************************************************************/
-    // const API_Geocode ='https://us1.locationiq.com/v1/search.php';
-
-    // const cityParameters = {
-    //   key:GEOCODE,
-    //   q: req.query.city,
-    //   format: 'json',
-    // };
-
-    // superagent.get(API_Geocode)
-    //     .query(cityParameters)
-    //     .then( data => {
-    //         let cityData = new Location(data.body[0],req.query.city);
-    //         const API_issPasses = 'http://api.open-notify.org/iss-pass.json';
-        
-            // const passesParameters = {
-            //     lat: cityData.lat,
-            //     lon: cityData.lon,
-            //   };
-        
-            // superagent.get(API_issPasses)
-            //   .query(passesParameters)
-            //   .then( data => {
-            //       console.log('return data', data.body);
-            //     let passData = new Passes(data.body);
-            //     console.log('passData', passData);
-            //   })
-        // });
-
-
-    // const API_issCurrentLocation = 'http://api.open-notify.org/iss-now.json';
-
-
-    // superagent.get(API_issCurrentLocation)
-    //     .then(data => {
-    //         issPosition = {
-    //             lat: data.iss_position.latitude,
-    //             long: data.iss_position.longitude
-    //         }
-            
-    //     });
-    // res.render('pages/results');
 }
 
 
