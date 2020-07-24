@@ -66,7 +66,7 @@ function Passes(obj){
 // ----------------------------------------------
 
 function handleHome(req, res){
-    res.render('landingPage');
+    res.render('pages/landingPage');
 }
 
 function handleBasic (req, res){
@@ -123,11 +123,11 @@ function handleResults (req, res){
 
 
 function handleAboutUs (req, res){
-    res.render('aboutUs');
+    res.render('pages/aboutUs');
 }
 
 function handleInfo (req, res){
-    res.render('info');
+    res.render('pages/info');
 }
 
 function noFindHandler(req, res){

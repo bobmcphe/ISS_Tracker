@@ -15,7 +15,7 @@ Install the following dependencies: express, cors, pg, ejs, dotenv, morgan (opti
 1. Run code with localhost:port in your browser, where `port` = whatever you set your port to.
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+See also [requirements](requirements.md) in our repo
 1. HTML
 1. CSS3
 1. Vanilla JS
@@ -53,3 +53,7 @@ Stretch: we may provide the user the ability to save Astronomy Pics of the Day u
 ![Link to Info Page](assets/wireframes/Info.png)
 
 ![Link to About Us Page](assets/wireframes/About-Us.png)
+
+## Credits
+
+See [credits](credits.md) in our repo
