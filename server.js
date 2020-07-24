@@ -9,9 +9,6 @@ const cors = require('cors');
 const morgan = require('morgan');
 
 
-
-// const client = new pg.Client(process.env.DATABASE_URL);
-
 const app = express();
 
 const PORT = process.env.PORT;
@@ -51,8 +48,9 @@ app.use(errorHandler); //errors
 function Location (obj, query){
     this.search_query = query;
     this.formatted_query = obj.display_name;
-    this.latitude = obj.lat;
-    this.longitude = obj.lon;
+    this.lat = obj.lat;
+    this.lon = obj.lon;
+
 }
 
 //constructor function that takes in ISS Pass info
@@ -70,14 +68,21 @@ function handleHome(req, res){
 }
 
 function handleBasic (req, res){
-    let SQL = `INSERT INTO savedTracker (name, city) VALUES ($1, $2) RETURNING *`; //sql command that saves persons username and city they entered on thelanding page
+    console.log('in handleBasic');
+    // let SQL = `INSERT INTO savedTracker (name, city) VALUES ('kim', 'chicago') RETURNING *;`; //sql command that saves persons username and city they entered on thelanding page
 
-    let values= [req.body.name, req.body.city]; // stores username and city values that were entered
+    // let values= [req.body.name, req.body.city]; // stores username and city values that were entered
 
-    client.query(SQL, values) //sends it to the DB
-        .then( results => {
-            console.log(results);
-        });
+    // console.log('values', values);
+
+    // client.query(SQL, values) //sends it to the DB
+    //     .then( () => {
+    //         res.render('pages/basicUser');
+    //     })
+    //     .catch (error => {
+    //         console.log('error from catch', error);
+    //     });
+            res.render('pages/basicUser', {city: req.body.city});
 }
 
 function handleResults (req, res){
@@ -85,40 +90,43 @@ function handleResults (req, res){
 
     const cityParameters = {
       key:GEOCODE,
-      q: city,
+      q: req.query.city,
       format: 'json',
     };
 
     superagent.get(API_Geocode)
         .query(cityParameters)
         .then( data => {
-            let cityData = new Location(data[0],city);
+            let cityData = new Location(data.body[0],req.query.city);
+            const API_issPasses = 'http://api.open-notify.org/iss-pass.json';
+        
+            const passesParameters = {
+                lat: cityData.lat,
+                lon: cityData.lon,
+              };
+        
+            superagent.get(API_issPasses)
+              .query(passesParameters)
+              .then( data => {
+                  console.log('return data', data.body);
+                let passData = new Passes(data.body);
+                console.log('passData', passData);
+              })
         });
 
-    const API_issPasses = 'http://api.open-notify.org/iss-pass.json';
 
-    const passesParameters = {
-        lat: cityData.lat,
-        lon: cityData.lon,
-      };
-
-    superagent.get(API_issPasses)
-      .query(passesParameters)
-      .then( data => {
-        let passData = Passes(data);
-      })
-
-    const API_issCurrentLocation = 'http://api.open-notify.org/iss-now.json';
+    // const API_issCurrentLocation = 'http://api.open-notify.org/iss-now.json';
 
 
-    superagent.get(API_issCurrentLocation)
-        .then(data => {
-            issPosition = {
-                lat: data.iss_position.latitude,
-                long: data.iss_position.longitude
-            }
+    // superagent.get(API_issCurrentLocation)
+    //     .then(data => {
+    //         issPosition = {
+    //             lat: data.iss_position.latitude,
+    //             long: data.iss_position.longitude
+    //         }
             
-        });
+    //     });
+    res.render('pages/results');
 }
 
 
