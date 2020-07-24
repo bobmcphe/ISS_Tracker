@@ -59,15 +59,29 @@ function Passes(obj){
     this.risetime = obj.response[0].risetime;
 }
 
+//constructor function that takes in Weather info
 function Weather(obj){
+    this.weatherIconURL = `https://www.weatherbit.io/static/img/icons/${obj.data[0].weather.icon}.png`
+    this.description = obj.data[0].weather.description;
+    this.sunrise = obj.data[13].sunrise;
+    this.sunset = obj.data[14].sunrise;
+    this.temp = ((obj.data[15].temp * 9/5) + 32);
+    this.elevationAngle = obj.data[5].elev_angle;
 
 }
 
+//constructor function that takes in Astronanmy Pic of the Day info
 function APOD(obj){
     this.copyright = obj.copyright;
     this.date = obj.date;
     this.title = obj.title;
     this.url = obj.hdurl;
+}
+
+//constructor function that takes in ISS Location info
+function ISSLocation(obj){
+    this.lat = obj.iss_position.lat;
+    this.lon = obj.iss_position.lon;
 }
 
 // ----------------------------------------------
@@ -98,15 +112,17 @@ function handleResults (req, res){
     // ----------------------------------------------
     // API URLs
     // ----------------------------------------------
-    const API_Geocode ='https://us1.locationiq.com/v1/search.php';
-    const API_issPasses = 'http://api.open-notify.org/iss-pass.json';
-    const API_issCurrentLocation = 'http://api.open-notify.org/iss-now.json';
-    const API_weather = 'https://api.weatherbit.io/v2.0/current'
+    
     const API_apod = 'https://api.nasa.gov/planetary/apod';
-
+    const API_issCurrentLocation = 'http://api.open-notify.org/iss-now.json';
+    const API_Geocode ='https://us1.locationiq.com/v1/search.php';
+    const API_weather = 'https://api.weatherbit.io/v2.0/current'
+    // const API_issPasses = 'http://api.open-notify.org/iss-pass.json';
+    
     // ----------------------------------------------
     // API query parameters
     // ----------------------------------------------
+
     const cityParameters = {
         key:GEOCODE,
         q: req.query.city,
@@ -119,7 +135,7 @@ function handleResults (req, res){
     };
 
     const nasaParameters = {
-        key: NASA_KEY
+        api_key: NASA_KEY
     };
 
     // ----------------------------------------------
@@ -129,19 +145,32 @@ function handleResults (req, res){
     const api2 = superagent.get(API_issCurrentLocation);
     const api3 = superagent.get(API_Geocode).query(cityParameters);
     const api4 = superagent.get(API_weather).query(weatherParameters);
-    const api5 = superagent.get(API_issPasses).query(passesParameters);
+    // const api5 = superagent.get(API_issPasses).query(passesParameters);
 
 
-    Promise.all([api1, api2, api3, api4])
+    Promise.all([api1, api2])
       .then( data => {
-        const issPosition = {
-            lat: data[1].body.iss_position.latitude,
-            long: data[1].body.iss_position.longitude
-        };  
-        const cityData = new Location(data[2].body[0],req.query.city);
-        
-        let passData = new Passes(data[1].body);
-        // 
+        console.log(data);
+        //run APOD data through Constructor
+        const astronamyPic = new APOD(data[0].body);
+
+        //run ISS Current Position data through Constructor
+        const issPosition = new ISSLocation(data[1].body);
+
+        //run Location data through Constructor
+        // const cityData = new Location(data[2].body[0],req.query.city);
+
+        //run weather data based on inputted city through Constructor
+        // let weatherData = new Weather(data[3].body);
+
+        //run ISS pass data based on inputted city through Constructor
+        // let passData = new Passes(data[1].body);
+
+        console.log('ASPOD:', astronamyPic);
+        console.log('Postion:', issPosition);
+        // console.log('City Data:', cityData);
+        // console.log('Weather:', weatherData);
+    
         
       })
     
