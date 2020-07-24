@@ -69,20 +69,21 @@ function handleHome(req, res){
 
 function handleBasic (req, res){
     console.log('in handleBasic');
-    // let SQL = `INSERT INTO savedTracker (name, city) VALUES ('kim', 'chicago') RETURNING *;`; //sql command that saves persons username and city they entered on thelanding page
+    let SQL = `INSERT INTO savedTracker (name, city) VALUES($1, $2) RETURNING *;`; //sql command that saves persons username and city they entered on the landing page
 
-    // let values= [req.body.name, req.body.city]; // stores username and city values that were entered
+    let values= [req.body.name, req.body.city]; // stores username and city values that were entered
 
-    // console.log('values', values);
+    console.log('values', values);
 
-    // client.query(SQL, values) //sends it to the DB
-    //     .then( () => {
-    //         res.render('pages/basicUser');
-    //     })
-    //     .catch (error => {
-    //         console.log('error from catch', error);
-    //     });
+    client.query(SQL, values) //sends it to the DB
+        .then( results => {
+            console.log(results);
             res.render('pages/basicUser', {city: req.body.city});
+        })
+        .catch (error => {
+            console.log('error from catch', error);
+        });
+            // res.render('pages/basicUser', {city: req.body.city});
 }
 
 function handleResults (req, res){
