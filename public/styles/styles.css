@@ -1,12 +1,62 @@
 
-@import "/public/styles/reset.css"; 
-@import "/public/styles/base.css"; 
-@import "/public/styles/modules.css"; 
-@import "/public/styles/layout.css"; 
+@import "styles/reset.css"; 
+@import "styles/base.css"; 
+@import "styles/modules.css"; 
+@import "styles/layout.css"; 
 
 
 /* below is proof of life test */
+/* Sorry, Bobby....the red was burning my eyeballs =P */
 
 body{
-    background-color: red;
+    background-color: grey;
+}
+
+
+h1 {
+  font-size: 32px;
+  text-align: center;
+  margin: 50px;
+}
+
+.pic-container {
+  background-image: url("/icons-pretty-pics/black-stars.jpeg");
+  background-repeat: no-repeat;
+  padding: 50px;
+  margin: auto;
+}
+
+.form-container {
+    width: 200px;
+    height: 150px;
+    background-color: whitesmoke;
+    opacity: .60;
+    margin: 20px auto;
+    border-radius: 10%;
+    padding: 20px;
+}
+input {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  margin: 10px auto 0px;
+}
+  
+ ::placeholder {
+  color: black;
+  opacity: 1;
+}
+
+.icon, .active {
+  width: 50px;
+  margin-top: 20px;
+
+  animation-name: spin;
+  animation-duration: 1.5s;
+  animation-iteration-count: 2;
+}
+
+@keyframes spin {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
 }
