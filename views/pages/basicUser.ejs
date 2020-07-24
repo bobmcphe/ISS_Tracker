@@ -1,52 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISS Tracker</title>
-    <link rel="stylesheet" type="text/css" href="/public/styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
 </head>
 <body>
-    <header>
-        <!-- <%- include('../partials/header') %> -->   
-    </header>
-    <div>
-        <img src="https://via.placeholder.com/650" alt="Astronomy pic of day"> <!--TODO NEEDS TO BE TEMPLATED  -->
+  <header>
+  </header>
+  <!-- <div>
+    <img src="https://via.placeholder.com/650" alt="Astronomy pic of day"> 
+  </div>
+  <main>
+      
+  <div class="weather">
+      <h2>WEATHER</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci blanditiis officiis repudiandae laborum nulla ex sunt ut nemo, optio consectetur odit placeat. Odit earum doloribus est pariatur ad, maxime recusandae!</p>
+  </div>
+
+  <div class="issMap">
+      <h2>ISS MAP</h2>
+      <a href="https://www.nasa.gov/content/international-space-station-latest-news-archives/#.Xxj8dyhKhPY">
+      <img src="https://via.placeholder.com/250" alt="Map of the ISS">
+      </a>
+  </div> -->
+
+  <div class="passTimesTemplate">
+
+      <form method="get" action="/basic/results">   
+        <input type = "hidden" name = "city" value = "<%= city %>">
+      <button type="submit">See My Passes</button>
+      </form>
+
+          
     </div>
-    <main>
-        
-        <div class="weather">
-            <h2>WEATHER</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci blanditiis officiis repudiandae laborum nulla ex sunt ut nemo, optio consectetur odit placeat. Odit earum doloribus est pariatur ad, maxime recusandae!</p>
-        </div>
-
-        <div class="issMap">
-            <h2>ISS MAP</h2>
-            <a href="https://www.nasa.gov/content/international-space-station-latest-news-archives/#.Xxj8dyhKhPY">
-            <img src="https://via.placeholder.com/250" alt="Map of the ISS">
-            </a>
-        </div>
-
-        <div class="passTimesTemplate">
-            <ul>
-
-                <!-- <%  for (var x of x's) {%> <!-- TODO need to determine names -->
-                <!-- <li class="day">Day: <%= x.day  %> </li>
-                <li class="time">Time: <%= x.time  %> </li> -->
-    
-                    <form method="get" action="/basic/results">  <!-- TODO doublecheck route -->
-    
-                    <input type="hidden" name="day" value="<%=x.day%>"> 
-                    <input type="hidden" name="time" value="<%=x.time%>">  -->
-                    <button type="submit">See My Passes</button>
-                </form>
-                <% } %>
-
-            </ul>
-        </div>
-    </main>
-    <footer>
-        <!-- <%- include('../partials/footer') %> -->   
-    </footer>
+  </main>
+  <footer>
+  </footer>
 </body>
 </html>
