@@ -1,62 +1,90 @@
 
+  /* default view mobile <= 400-576px */
+  
+  * {
+    color: black;
+    font-size: small;
+  }
+  
   body {
-    background-color: yellow;
+    background-color: whitesmoke;
   }
 
 
   nav ul {
     display: flex;
-    margin: 30px auto 30px 100px;
-    background-color: gray;
-    height: 50px;
-    margin-top: 0px;
-    margin-left: 0%;
+    justify-content: center;
+    /* background-color: gray; */
+    height: 20px;
+    padding: 15px;
+    border-bottom: 1px solid gray;
   }
 
-  /* nav {
-    padding-left: 0%;
-    padding-top: 0%;
-  } */
 
-  a {
-    margin: auto 30px;
-    font-size: large;
+  a, p {
+    font-size: small;
     text-decoration: none; 
-    color: whitesmoke; 
   }
-
+  
   nav ul a {
-    line-height: 50px;
-    font: large;
+    line-height: 1.5;
+    color: black;
+    margin: 15px;
     }
 
   a:hover{
     color: black;
   }
 
+  .icon, .active {
+    width: 50px;
+    margin: 10px 20px;
+    animation-name: spin;
+    animation-duration: 1.5s;
+    animation-iteration-count: 2;
+  }
+  
+  @keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+  }
+
+  .logo {
+    float: left;
+  }
+  
+
   .mediumImage {
-    width: 150px;
+    max-width: 100px;
     border: gray solid 3px;
     border-radius: 3px;
   }
 
-  div{
-    
-    width: 200px;
-    margin: 0 auto;
+  #patch {
+    border: none;
+    width: 100px;
+    margin-top: 20px;
+
   }
 
   #astroBios, #cosmonauts{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-around;
-
+    text-align: center;
+    margin: 30px auto;
   }
 
-  footer p{
+  #astroBios a:hover, #cosmonauts a:hover, ul a:hover{
+    color: gray;
+  }
+
+
+  footer p, footer a{
     line-height: 1.5;
-    /* margin: 10px auto 30px 20px; */
     text-align: left;
+    color: whitesmoke;
+    margin-left: 20px;
   }
 
 
@@ -65,32 +93,14 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: black;
-    color: white;
-    text-align: center;
-  }
+    background-color:gray;
+    }
 
 
-  footer a {
-    font-size: large;
-    margin-top: 30px;
-    line-height: 50px;
-  }
-
-  footer a:hover {
-    font-size: large;
-    color: grey;
-    padding-top: 25px;
-    margin-top: 50px;
-  }
-
-  footer ul li {
-    width: 600px;
-    display: inline-block;
-  }
 
 
-@media screen and (min-device-width: 1000px) { 
+/* tablet size 576-992px */
+@media screen and (min-width: 576px) { 
   body {
     background-color: red;
   }
@@ -147,20 +157,11 @@
   }
 
 
-  footer a {
-    font-size: large;
-    margin-top: 30px;
-  }
-
-  footer a:hover {
-    font-size: large;
-    color: grey;
-    padding-top: 25px;
-    margin-top: 50px;
-  }
 }
 
-  @media screen and (min-device-width: 900px) { 
+/* large screen 992px+ */
+
+  @media screen and (min-width: 992px) { 
   body {
     background-color: pink;
   }
@@ -205,6 +206,7 @@
     line-height: 1.5;
     margin: 10px auto 30px 20px;
     text-align: left;
+    font-size: 15px;
   }
 
 
@@ -215,22 +217,11 @@
     width: 100%;
     background-color: black;
     color: white;
-    text-align: center;
   }
 
 
-  footer a {
-    font-size: large;
-    margin-top: 30px;
-  }
 
-  footer a:hover {
-    font-size: large;
-    color: grey;
-    padding-top: 25px;
-    margin-top: 50px;
-  }
-}
+
 
 
 
