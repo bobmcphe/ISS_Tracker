@@ -44,16 +44,17 @@ Stretch: we may provide the user the ability to save Astronomy Pics of the Day u
 
 
 ## Wireframes
-![Link to Landing Page](assets/wireframes/LP.png)
+![Link to Landing Page](public/assets/wireframes/LP.png)
 
-![Link to Basic User Page](assets/wireframes/Basic-User.png)
+![Link to Basic User Page](public/assets/wireframes/Basic-User.png)
 
-![Link to Radio User Page](assets/wireframes/Radio-User.png)
+![Link to Radio User Page](public/assets/wireframes/Radio-User.png)
 
-![Link to Info Page](assets/wireframes/Info.png)
+![Link to Info Page](public/assets/wireframes/Info.png)
 
-![Link to About Us Page](assets/wireframes/About-Us.png)
+![Link to About Us Page](public/assets/wireframes/About-Us.png)
 
 ## Credits
 
 See [credits](credits.md) in our repo
+
