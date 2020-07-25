@@ -41,6 +41,23 @@ app.get('/info', handleInfo); //info page
 app.use('*', noFindHandler); // 404 route doesnt exist
 app.use(errorHandler); //errors
 
+// ----------------------------------------------
+// Functions
+// ----------------------------------------------
+
+function saveLocation(obj) {
+
+    const values = [obj.search_query, obj.formatted_query, obj.lat, obj.lon];
+
+    const SQL = `
+    INSERT INTO cities (search_query, formatted_query, lat, lon) VALUES ($1, $2, $3, $4) RETURNING *;`;
+  
+    client.query(SQL, values)
+      .then(results => {
+        console.log(results);
+      });
+  }
+
 
 // ----------------------------------------------
 // Constructor Functions
@@ -94,7 +111,7 @@ function handleHome(req, res){
 function handleBasic (req, res){
     let SQL = `INSERT INTO savedTracker (name, city) VALUES($1, $2) RETURNING *;`; //sql command that saves persons username and city they entered on the landing page
 
-    let values= [req.body.name, req.body.city]; // stores username and city values that were entered
+    let values= [req.body.name, req.body.city.toLowerCase()]; // stores username and city values that were entered
 
     client.query(SQL, values) //sends it to the DB
         .then( () => {
@@ -146,6 +163,19 @@ function handleResults (req, res){
     const api3 = superagent.get(API_Geocode).query(cityParameters);
     const api4 = superagent.get(API_weather).query(weatherParameters);
     
+    // try {
+    //     const SQL = 'SELECT * from cities WHERE search_query = $1';
+    //     const city = [request.query.city];
+
+    //     client.query(SQL, city)
+    //         .then(locations => {
+    //             if (locations.rowCount){
+    //                 console.log('The DB has it!');
+    //                 console.log()
+    //             }
+    //         });
+    // }
+
     Promise.all([api1, api2, api3, api4])
       .then(data => {
           console.log(data[2].body[0]);
@@ -156,7 +186,9 @@ function handleResults (req, res){
         const issPosition = new ISSLocation(data[1].body);
 
         //run Location data through Constructor
-        const cityData = new Location(data[2].body[0],req.query.city);
+        const cityData = new Location(data[2].body[0],req.query.city.toLowerCase());
+
+        saveLocation(cityData);
 
         //run weather data based on inputted city through Constructor
         let weatherData = data[3].body.data.map(day => {
