@@ -148,7 +148,7 @@ function handleResults (req, res){
     
     Promise.all([api1, api2, api3, api4])
       .then(data => {
-          console.log(data[3].body);
+          console.log(data[2].body[0]);
         //run APOD data through Constructor
         const astronamyPic = new APOD(data[0].body);
 
@@ -162,7 +162,7 @@ function handleResults (req, res){
         let weatherData = data[3].body.data.map(day => {
             return new Weather(day);
         });
-        console.log(weatherData);
+        console.log(cityData);
         //Now that we have location lat and lon (from cityData) we can run our query for ISS pass info
 
         const passesParameters = {
