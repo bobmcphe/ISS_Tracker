@@ -55,18 +55,17 @@ function Location (obj, query){
 
 //constructor function that takes in ISS Pass info
 function Passes(obj){
-    this.duration = obj.duration;
-    this.risetime = obj.risetime;
+    this.duration = Math.floor((obj.duration / 60));
+    this.date = new Date(obj.risetime * 1000).toDateString();
+    this.time = new Date(obj.risetime * 1000).toTimeString();
 }
 
 //constructor function that takes in Weather info
 function Weather(obj){
-    this.weatherIconURL = `https://www.weatherbit.io/static/img/icons/${obj.data[0].weather.icon}.png`
-    this.description = obj.data[0].weather.description;
-    this.sunrise = obj.data[0].sunrise;
-    this.sunset = obj.data[0].sunset;
-    this.temp = ((obj.data[0].temp * 9/5) + 32);
-    this.elevationAngle = obj.data[0].elev_angle;
+    this.weatherIconURL = `https://www.weatherbit.io/static/img/icons/${obj.weather.icon}.png`
+    this.description = obj.weather.description;
+    this.temp = obj.temp;
+    this.date = obj.valid_date;
 
 }
 
@@ -93,7 +92,6 @@ function handleHome(req, res){
 }
 
 function handleBasic (req, res){
-    console.log('in handleBasic');
     let SQL = `INSERT INTO savedTracker (name, city) VALUES($1, $2) RETURNING *;`; //sql command that saves persons username and city they entered on the landing page
 
     let values= [req.body.name, req.body.city]; // stores username and city values that were entered
@@ -117,7 +115,7 @@ function handleResults (req, res){
     const API_apod = 'https://api.nasa.gov/planetary/apod';
     const API_issCurrentLocation = 'http://api.open-notify.org/iss-now.json';
     const API_Geocode ='https://us1.locationiq.com/v1/search.php';
-    const API_weather = 'https://api.weatherbit.io/v2.0/current'
+    const API_weather = 'https://api.weatherbit.io/v2.0/forecast/daily'
     const API_issPasses = 'http://api.open-notify.org/iss-pass.json';
     
     // ----------------------------------------------
@@ -132,6 +130,8 @@ function handleResults (req, res){
 
     const weatherParameters = {
         city: req.query.city,
+        days: 2,
+        units: 'I',
         key: WEATHER
     };
 
@@ -146,11 +146,10 @@ function handleResults (req, res){
     const api2 = superagent.get(API_issCurrentLocation);
     const api3 = superagent.get(API_Geocode).query(cityParameters);
     const api4 = superagent.get(API_weather).query(weatherParameters);
-
-
+    
     Promise.all([api1, api2, api3, api4])
-      .then( data => {
-        
+      .then(data => {
+          console.log(data[3].body);
         //run APOD data through Constructor
         const astronamyPic = new APOD(data[0].body);
 
@@ -161,14 +160,16 @@ function handleResults (req, res){
         const cityData = new Location(data[2].body[0],req.query.city);
 
         //run weather data based on inputted city through Constructor
-        let weatherData = new Weather(data[3].body);
-
+        let weatherData = data[3].body.data.map(day => {
+            return new Weather(day);
+        });
+        console.log(weatherData);
         //Now that we have location lat and lon (from cityData) we can run our query for ISS pass info
 
         const passesParameters = {
             lat: cityData.lat,
             lon: cityData.lon,
-          };
+        };
 
         superagent.get(API_issPasses)
               .query(passesParameters)
@@ -176,10 +177,10 @@ function handleResults (req, res){
                 let passData = data.body.response.map(pass => {
                     return new Passes(pass);
                 });
+                console.log(passData);
                 res.render('pages/results',{ pic:astronamyPic, issPosition:issPosition, location:cityData, weather: weatherData, issPasses: passData });
               });
-
-      })
+    });
     
 }
 
