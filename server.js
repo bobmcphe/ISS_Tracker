@@ -53,8 +53,8 @@ function saveLocation(obj) {
     INSERT INTO cities (search_query, formatted_query, lat, lon) VALUES ($1, $2, $3, $4) RETURNING *;`;
   
     client.query(SQL, values)
-      .then(results => {
-        console.log(results);
+      .then(() => {
+        console.log('This city has been saved');
       });
   }
 
@@ -160,58 +160,89 @@ function handleResults (req, res){
     // ----------------------------------------------
     const api1 = superagent.get(API_apod).query(nasaParameters);
     const api2 = superagent.get(API_issCurrentLocation);
-    const api3 = superagent.get(API_Geocode).query(cityParameters);
-    const api4 = superagent.get(API_weather).query(weatherParameters);
-    
-    // try {
-    //     const SQL = 'SELECT * from cities WHERE search_query = $1';
-    //     const city = [request.query.city];
+    const api3 = superagent.get(API_weather).query(weatherParameters);
+    const api4 = superagent.get(API_Geocode).query(cityParameters);
+    try {
+        const SQL = 'SELECT * from cities WHERE search_query = $1';
+        const city = [req.query.city];
 
-    //     client.query(SQL, city)
-    //         .then(locations => {
-    //             if (locations.rowCount){
-    //                 console.log('The DB has it!');
-    //                 console.log()
-    //             }
-    //         });
-    // }
+        client.query(SQL, city)
+            .then(locations => {
+                let cityData = locations.rows[0];
+                console.log('The database has this city!');
+                Promise.all([api1, api2, api3])
+                    .then(data => {
 
-    Promise.all([api1, api2, api3, api4])
-      .then(data => {
-          console.log(data[2].body[0]);
-        //run APOD data through Constructor
-        const astronamyPic = new APOD(data[0].body);
+                        //run APOD data through Constructor
+                        const astronamyPic = new APOD(data[0].body);
 
-        //run ISS Current Position data through Constructor
-        const issPosition = new ISSLocation(data[1].body);
+                        //run ISS Current Position data through Constructor
+                        const issPosition = new ISSLocation(data[1].body);
 
-        //run Location data through Constructor
-        const cityData = new Location(data[2].body[0],req.query.city.toLowerCase());
+                        //run weather data based on inputted city through Constructor
+                        let weatherData = data[2].body.data.map(day => {
+                            return new Weather(day);
+                        });
 
-        saveLocation(cityData);
+                        //Now that we have location lat and lon (from cityData) we can run our query for ISS pass info
 
-        //run weather data based on inputted city through Constructor
-        let weatherData = data[3].body.data.map(day => {
-            return new Weather(day);
-        });
-        console.log(cityData);
-        //Now that we have location lat and lon (from cityData) we can run our query for ISS pass info
+                        const passesParameters = {
+                            lat: cityData.lat,
+                            lon: cityData.lon,
+                        };
 
-        const passesParameters = {
-            lat: cityData.lat,
-            lon: cityData.lon,
-        };
+                        superagent.get(API_issPasses)
+                            .query(passesParameters)
+                            .then(data => {
+                                let passData = data.body.response.map(pass => {
+                                    return new Passes(pass);
+                                });
+                                res.render('pages/results',{ pic:astronamyPic, issPosition:issPosition, location:cityData, weather: weatherData, issPasses: passData });
+                            });
+                    });
 
-        superagent.get(API_issPasses)
-              .query(passesParameters)
-              .then(data => {
-                let passData = data.body.response.map(pass => {
-                    return new Passes(pass);
+            });
+    }
+    catch{
+        console.log('This city is not in the Database');
+
+        Promise.all([api1, api2, api3, api4])
+            .then(data => {
+
+                //run APOD data through Constructor
+                const astronamyPic = new APOD(data[0].body);
+
+                //run ISS Current Position data through Constructor
+                const issPosition = new ISSLocation(data[1].body);
+
+                //run weather data based on inputted city through Constructor
+                let weatherData = data[2].body.data.map(day => {
+                    return new Weather(day);
                 });
-                console.log(passData);
-                res.render('pages/results',{ pic:astronamyPic, issPosition:issPosition, location:cityData, weather: weatherData, issPasses: passData });
-              });
-    });
+
+                //run Location data through Constructor
+                const cityData = new Location(data[3].body[0],req.query.city.toLowerCase());
+
+                saveLocation(cityData);
+
+                //Now that we have location lat and lon (from cityData) we can run our query for ISS pass info
+
+                const passesParameters = {
+                    lat: cityData.lat,
+                    lon: cityData.lon,
+                };
+
+                superagent.get(API_issPasses)
+                    .query(passesParameters)
+                    .then(data => {
+                        let passData = data.body.response.map(pass => {
+                            return new Passes(pass);
+                        });
+                        res.render('pages/results',{ pic:astronamyPic, issPosition:issPosition, location:cityData, weather: weatherData, issPasses: passData });
+                    });
+            });
+    
+    }
     
 }
 
