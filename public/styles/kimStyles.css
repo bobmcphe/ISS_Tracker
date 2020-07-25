@@ -17,9 +17,13 @@
     /* background-color: gray; */
     height: 20px;
     padding: 15px;
-    border-bottom: 1px solid gray;
+    /* border-bottom: 1px solid gray; */
+    
   }
 
+  nav{
+    margin-top: 20px;
+  }
 
   a, p {
     font-size: small;
@@ -30,10 +34,34 @@
     line-height: 1.5;
     color: black;
     margin: 15px;
+    background-color: #A9A9A9	;
+    padding: 3px;
+    border: black solid 1px;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 5px;
+   
     }
 
   a:hover{
     color: black;
+  }
+
+  figcaption{
+    background-color: #A9A9A9;
+    height: 25px;
+    line-height: 25px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+
+  img {
+    margin: 20px 10px;
+  }
+
+  div {
+    background-color: black;
+    border-radius: 3px;
   }
 
   .icon, .active {
@@ -75,8 +103,21 @@
     margin: 30px auto;
   }
 
+  #astroBios{
+    margin-top: 7%;
+  }
+
+  #cosmonauts{
+    margin-bottom: 7%
+  }
+
   #astroBios a:hover, #cosmonauts a:hover, ul a:hover{
     color: gray;
+  }
+
+  ul a:hover{
+    color: white;
+    background-color: black;
   }
 
 
@@ -97,18 +138,31 @@
     }
 
 
+/* Single-direction drop shadow */
 
+hr.hrTop {
+  height: 12px;
+  border: 0;
+  box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+}
+
+hr.hrBottom {
+  height: 12px;
+  border: 0;
+  box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+  margin-bottom: 125px;
+}
 
 /* tablet size 576-992px */
 @media screen and (min-width: 576px) { 
   body {
-    background-color: red;
+    background-color: whitesmoke;
   }
 
 
   nav ul {
     display: flex;
-    margin: 30px auto 30px 100px;
+    margin: 0px auto 20px auto;
   }
 
   a {
@@ -141,7 +195,8 @@
 
   footer p{
     line-height: 1.5;
-    margin: 10px auto 30px 20px;
+
+    margin: 10px auto 10px 20px;
     text-align: left;
   }
 
@@ -163,7 +218,7 @@
 
   @media screen and (min-width: 992px) { 
   body {
-    background-color: pink;
+    background-color: whitesmoke;
   }
 
 
@@ -176,7 +231,7 @@
 
   a {
     margin: auto 30px;
-    font-size: medium;
+    font-size: large;
     text-decoration: none; 
     color: whitesmoke; 
   }
@@ -199,14 +254,16 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-
   }
 
+
+
   footer p{
-    line-height: 1.5;
-    margin: 10px auto 30px 20px;
+    line-height: 2.5;
+    margin: 10px auto 10px 20px;
     text-align: left;
     font-size: 15px;
+    
   }
 
 
@@ -218,12 +275,3 @@
     background-color: black;
     color: white;
   }
-
-
-
-
-
-
-
-
-
