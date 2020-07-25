@@ -1,15 +1,55 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <head>
-  <title>Fun Facts and ISS Info</title>
-  <link rel="stylesheet" href = "styles/reset.css">
-  <link rel="stylesheet" href="styles/kimStyles.css">
+    <title>ISS Tracker</title>
+    <!-- <link rel="stylesheet" type="text/css" href="styles/styles.css"> -->
+    <link rel="stylesheet" href = "styles/reset.css">
+    <link rel="stylesheet" type="text/css" href="styles/lp-and-basicUser-styles.css">
 
 </head>
-
 <body>
-  <h1> I'm alllllliiiiiiiiive</h1>
+  <header>
+    <!-- <nav>  INSERT PARTIAL</nav> -->
+    <nav>
+      <a href = "/"> <img class = "icon active logo"  id = "nav-spin" src = "/icons-pretty-pics/icon-small-ISS.png"> </a>
+      <ul>
+  
+          <li> <a href = "pages/basicUser"> Your Passes </a></li>
+          <li> <a href = "pages/radio"> Radio User</a></li>
+          <li> <a href = "pages/info">Fun Facts</a></li>
+          <!-- <li> <a href = "pages/aboutUs">Meet The Team</a></li> -->
+      </ul>
+    </nav>
+  
+  </header>
+  
+  <div>
+    <img class = "apod" src="https://via.placeholder.com/350" alt="Astronomy pic of day"> 
+  </div>
+  <main>
+      
+  <div class="weather">
+      <h2>WEATHER</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci blanditiis officiis repudiandae laborum nulla ex sunt ut nemo, optio consectetur odit placeat. Odit earum doloribus est pariatur ad, maxime recusandae!</p>
+  </div>
 
+  <div class="issMap">
+      <h2>ISS MAP</h2>
+      <a href="https://www.nasa.gov/content/international-space-station-latest-news-archives/#.Xxj8dyhKhPY">
+      <img src="https://via.placeholder.com/250" alt="Map of the ISS">
+      </a>
+  </div>
+
+  <!-- <div class="passTimesTemplate">
+
+      <form method="get" action="/basic/results">   
+        <input type = "hidden" name = "city" value = "<%= city %>">
+      <button type="submit">See My Passes</button>
+      </form>
+
+          
+    </div> -->
+  </main>
+  <footer>
+  </footer>
 </body>
-    
-
+</html>

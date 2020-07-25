@@ -99,8 +99,9 @@ function handleBasic (req, res){
     let values= [req.body.name, req.body.city]; // stores username and city values that were entered
 
     client.query(SQL, values) //sends it to the DB
-        .then( () => {
-            res.render('pages/basicUser', {city: req.body.city});
+        .then( (results) => {
+            console.log(results);
+            res.render('pages/basicUser', {city: req.body.city, name: req.body.name});
         })
         .catch (error => {
             console.log('error from catch', error);
