@@ -4,6 +4,7 @@
 @import "modules.css"; 
 @import "layout.css"; 
 
+/* //////////////LP Styling ///////////////*/
 
 body{
     background-color: grey;
@@ -67,3 +68,5 @@ input {
   color: white;
   text-align: center;
 }
+
+/* ////////////////// */

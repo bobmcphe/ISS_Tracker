@@ -1,39 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <head>
-    <title>ISS Tracker</title>
-    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+  <title>Query Your Passes</title>
+  <link rel="stylesheet" href = "styles/reset.css">
+  <link rel="stylesheet" type="text/css" href="styles/lp-and-basicUser-styles.css">
+
+
 </head>
+
+<nav>
+  <a href = "/"> <img class = "icon active logo" src = "/icons-pretty-pics/icon-small-ISS.png"> </a>
+  <ul>
+
+      <li> <a href = "pages/basicUser"> Your Passes </a></li>
+      <li> <a href = "pages/radio"> Radio User</a></li>
+      <li> <a href = "pages/info">Fun Facts</a></li>
+  </ul>
+
+</nav>
+
 <body>
-  <header>
-  </header>
-  <!-- <div>
-    <img src="https://via.placeholder.com/650" alt="Astronomy pic of day"> 
-  </div>
-  <main>
-      
-  <div class="weather">
-      <h2>WEATHER</h2>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci blanditiis officiis repudiandae laborum nulla ex sunt ut nemo, optio consectetur odit placeat. Odit earum doloribus est pariatur ad, maxime recusandae!</p>
+
+  <div id = "greeting">    
+    <h1>Hi <%= name%></h1>
+    <h1>Get your pass info for <%= city %></h1>
   </div>
 
-  <div class="issMap">
-      <h2>ISS MAP</h2>
-      <a href="https://www.nasa.gov/content/international-space-station-latest-news-archives/#.Xxj8dyhKhPY">
-      <img src="https://via.placeholder.com/250" alt="Map of the ISS">
-      </a>
-  </div> -->
-
-  <div class="passTimesTemplate">
+  <div class = "pass-times-query">
 
       <form method="get" action="/basic/results">   
         <input type = "hidden" name = "city" value = "<%= city %>">
-      <button type="submit">See My Passes</button>
+      <button id = "query-pass" type="submit">See My Passes</button>
       </form>
+    
+  </div>
+  
+  <div>
+    <img class = "largeImage" src = "/icons-pretty-pics/the-world-from-a-distance.jpeg" alt = "Carl Sagan Quote">
+  </div>
 
-          
-    </div>
-  </main>
   <footer>
+    <a href = "pages/aboutUs">Meet The Team</a>
+    <p> &copy 2020: Ashley Casimir, Kim Damalas, Bobby McPherson</p>
   </footer>
-</body>
-</html>
+  
+  </body>
