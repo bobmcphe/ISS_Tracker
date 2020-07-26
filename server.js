@@ -142,7 +142,7 @@ function handleResults (req, res){
         key:GEOCODE,
         q: req.query.city,
         format: 'json'
-      };
+    };
 
     const weatherParameters = {
         city: req.query.city,
@@ -262,7 +262,7 @@ function handleInfo (req, res){
 function noFindHandler(req, res){
     res.status(404).send('Sorry, cannot find what you are looking for');
 }
-      
+    
 function errorHandler (err, req, res){
     res.status(500).send('Sorry, something went REALLY wrong', err);
 }
