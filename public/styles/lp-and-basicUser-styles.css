@@ -1,0 +1,169 @@
+/* //////////////LP Styling ///////////////*/
+
+#LP{
+    background-color: grey;
+}
+
+
+#LPh1 {
+  font-size: 32px;
+  text-align: center;
+  margin: 50px;
+  color: whitesmoke;
+}
+
+.pic-container {
+  background-image: url("/icons-pretty-pics/black-stars.jpeg");
+  background-repeat: no-repeat;
+  padding: 50px;
+  margin: auto;
+}
+
+.form-container {
+    width: 200px;
+    height: 150px;
+    background-color: whitesmoke;
+    opacity: .60;
+    margin: 20px auto;
+    border-radius: 10%;
+    padding: 20px;
+}
+input, #query-pass{
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  margin: 10px auto 0px;
+}
+  
+ ::placeholder {
+  color: black;
+  opacity: 1;
+}
+
+#lp-button {
+  width: 50px;
+  margin: 20px auto;
+
+  animation-name: spin;
+  animation-duration: 1.5s;
+  animation-iteration-count: 2;
+}
+
+@keyframes spin {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
+}
+
+/* No Need for LP Media Queries */
+/* ////////////////// */
+
+/*//////////// Basic User Styling ////////////*/
+
+* {
+  color: black;
+  font-size: small;
+}
+
+body {
+  background-color: whitesmoke;
+}
+
+h1 {
+  font-size: 32px;
+  text-align: center;
+  margin: 50px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  /* background-color: gray; */
+  height: 20px;
+  padding: 15px;
+  border-bottom: 1px solid gray;
+}
+
+#greeting h1{
+  margin: 20px auto;
+  color: black;
+}
+
+.apod,.issMap{
+  max-width: 350px;
+  margin: 30px auto;
+}
+
+
+
+a, p {
+  font-size: small;
+  text-decoration: none; 
+}
+
+nav ul a {
+  line-height: 1.5;
+  color: black;
+  margin: 15px;
+  }
+
+a:hover{
+  color: black;
+}
+
+.icon, .active, #nav-spin{
+  width: 50px;
+  margin: 10px 20px;
+  animation-name: spin;
+  animation-duration: 1.5s;
+  animation-iteration-count: 2;
+}
+
+@keyframes spin {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
+}
+
+.logo {
+  float: left;
+}
+
+.pass-times-query {
+  background-color: gray;
+  border: 2px solid gray;
+  border-radius: 3px;
+  width: 150px;
+  height: 80px;
+  margin: 30px auto;
+  padding-top: 30px;
+}
+
+footer p, footer a{
+  line-height: 1.5;
+  text-align: left;
+  color: whitesmoke;
+  margin-left: 20px;
+}
+
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color:gray;
+  }
+
+
+  /* ////// Result  and Radio Styling //// */
+
+.wxIcon {
+  width: 50px;
+  margin: 10px 20px;
+  animation: none;
+
+}
+
+.issMap {
+  width: 400px;
+
+}

@@ -41,6 +41,23 @@ app.get('/info', handleInfo); //info page
 app.use('*', noFindHandler); // 404 route doesnt exist
 app.use(errorHandler); //errors
 
+// ----------------------------------------------
+// Functions
+// ----------------------------------------------
+
+function saveLocation(obj) {
+
+    const values = [obj.search_query, obj.formatted_query, obj.lat, obj.lon];
+
+    const SQL = `
+    INSERT INTO cities (search_query, formatted_query, lat, lon) VALUES ($1, $2, $3, $4) RETURNING *;`;
+  
+    client.query(SQL, values)
+      .then(() => {
+        console.log('This city has been saved');
+      });
+  }
+
 
 // ----------------------------------------------
 // Constructor Functions
@@ -74,7 +91,7 @@ function APOD(obj){
     this.copyright = obj.copyright;
     this.date = obj.date;
     this.title = obj.title;
-    this.url = obj.hdurl;
+    this.url = obj.url;
 }
 
 //constructor function that takes in ISS Location info
@@ -94,11 +111,12 @@ function handleHome(req, res){
 function handleBasic (req, res){
     let SQL = `INSERT INTO savedTracker (name, city) VALUES($1, $2) RETURNING *;`; //sql command that saves persons username and city they entered on the landing page
 
-    let values= [req.body.name, req.body.city]; // stores username and city values that were entered
+    let values= [req.body.name, req.body.city.toLowerCase()]; // stores username and city values that were entered
 
     client.query(SQL, values) //sends it to the DB
-        .then( () => {
-            res.render('pages/basicUser', {city: req.body.city});
+        .then( (results) => {
+            console.log(results);
+            res.render('pages/basicUser', {city: req.body.city, name: req.body.name});
         })
         .catch (error => {
             console.log('error from catch', error);
@@ -121,11 +139,13 @@ function handleResults (req, res){
     // API query parameters
     // ----------------------------------------------
 
+    let date = new Date('2013-03-10T02:00:00Z');
+    let dateOnly = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();  
     const cityParameters = {
         key:GEOCODE,
         q: req.query.city,
         format: 'json'
-      };
+    };
 
     const weatherParameters = {
         city: req.query.city,
@@ -135,54 +155,105 @@ function handleResults (req, res){
     };
 
     const nasaParameters = {
-        api_key: NASA_KEY
+        api_key: NASA_KEY,
+        date: dateOnly
     };
-
+    
     // ----------------------------------------------
     // API Queries with parameters
     // ----------------------------------------------
     const api1 = superagent.get(API_apod).query(nasaParameters);
     const api2 = superagent.get(API_issCurrentLocation);
-    const api3 = superagent.get(API_Geocode).query(cityParameters);
-    const api4 = superagent.get(API_weather).query(weatherParameters);
-    
-    Promise.all([api1, api2, api3, api4])
-      .then(data => {
-          console.log(data[3].body);
-        //run APOD data through Constructor
-        const astronamyPic = new APOD(data[0].body);
+    const api3 = superagent.get(API_weather).query(weatherParameters);
+    const api4 = superagent.get(API_Geocode).query(cityParameters);
 
-        //run ISS Current Position data through Constructor
-        const issPosition = new ISSLocation(data[1].body);
+    // The server will first check to see if the city is already saved in the DB
 
-        //run Location data through Constructor
-        const cityData = new Location(data[2].body[0],req.query.city);
+    const SQL = 'SELECT * from cities WHERE search_query = $1';
+    const city = [req.query.city];
 
-        //run weather data based on inputted city through Constructor
-        let weatherData = data[3].body.data.map(day => {
-            return new Weather(day);
+    client.query(SQL, city)
+        .then(locations => {
+            if(locations.rowCount){
+                let cityData = locations.rows[0];
+            
+                Promise.all([api1, api2, api3])
+                    .then(data => {
+                        console.log('The database has this city!');
+                        //run APOD data through Constructor
+                        const astronamyPic = new APOD(data[0].body);
+
+                        //run ISS Current Position data through Constructor
+                        const issPosition = new ISSLocation(data[1].body);
+
+                        //run weather data based on inputted city through Constructor
+                        let weatherData = data[2].body.data.map(day => {
+                            return new Weather(day);
+                        });
+
+                        //Now that we have location lat and lon (from cityData) we can run our query for ISS pass info
+
+                        const passesParameters = {
+                            lat: cityData.lat,
+                            lon: cityData.lon,
+                        };
+
+                        superagent.get(API_issPasses)
+                            .query(passesParameters)
+                            .then(data => {
+                                let passData = data.body.response.map(pass => {
+                                    return new Passes(pass);
+                                });
+                                res.render('pages/results',{ pic:astronamyPic, issPosition:issPosition, location:cityData, weather: weatherData, issPasses: passData });
+                            });
+                    });
+
+            }
+            else{
+
+                //If the city is not in the DB it will query the API
+
+                console.log('This city is not in the Database');
+
+                Promise.all([api1, api2, api3, api4])
+                    .then(data => {
+
+                        //run APOD data through Constructor
+                        const astronamyPic = new APOD(data[0].body);
+
+                        //run ISS Current Position data through Constructor
+                        const issPosition = new ISSLocation(data[1].body);
+
+                        //run weather data based on inputted city through Constructor
+                        let weatherData = data[2].body.data.map(day => {
+                            return new Weather(day);
+                        });
+
+                        //run Location data through Constructor
+                        const cityData = new Location(data[3].body[0],req.query.city.toLowerCase());
+
+                        saveLocation(cityData);
+
+                        //Now that we have location lat and lon (from cityData) we can run our query for ISS pass info
+
+                        const passesParameters = {
+                            lat: cityData.lat,
+                            lon: cityData.lon,
+                        };
+
+                        superagent.get(API_issPasses)
+                            .query(passesParameters)
+                            .then(data => {
+                                let passData = data.body.response.map(pass => {
+                                    return new Passes(pass);
+                                });
+                                res.render('pages/results',{ pic:astronamyPic, issPosition:issPosition, location:cityData, weather: weatherData, issPasses: passData });
+                            });
+                    });
+            }
+            
         });
-        console.log(weatherData);
-        //Now that we have location lat and lon (from cityData) we can run our query for ISS pass info
-
-        const passesParameters = {
-            lat: cityData.lat,
-            lon: cityData.lon,
-        };
-
-        superagent.get(API_issPasses)
-              .query(passesParameters)
-              .then(data => {
-                let passData = data.body.response.map(pass => {
-                    return new Passes(pass);
-                });
-                console.log(passData);
-                res.render('pages/results',{ pic:astronamyPic, issPosition:issPosition, location:cityData, weather: weatherData, issPasses: passData });
-              });
-    });
-    
 }
-
 
 function handleAboutUs (req, res){
     res.render('pages/aboutUs');
@@ -195,7 +266,7 @@ function handleInfo (req, res){
 function noFindHandler(req, res){
     res.status(404).send('Sorry, cannot find what you are looking for');
 }
-      
+    
 function errorHandler (err, req, res){
     res.status(500).send('Sorry, something went REALLY wrong', err);
 }

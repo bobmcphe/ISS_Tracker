@@ -44,7 +44,7 @@
     }
 
   a:hover{
-    color: black;
+    color: rgb(85, 84, 84);
   }
 
   figcaption{
@@ -92,6 +92,7 @@
     border: none;
     width: 100px;
     margin-top: 20px;
+    margin-bottom: 52px;
 
   }
 
@@ -137,6 +138,12 @@
     background-color:gray;
     }
 
+    footer a {
+
+      float: right;
+      margin-top: -40px;
+    }
+
 
 /* Single-direction drop shadow */
 
@@ -152,6 +159,21 @@ hr.hrBottom {
   box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
   margin-bottom: 125px;
 }
+
+
+.bioPics {
+  width: 200px;
+  background-color: pink;
+  margin-bottom: 150px;
+}
+
+#bioMain {
+  margin-left: 0px;
+  background-color: yellow;
+  display: flex;
+}
+
+
 
 /* tablet size 576-992px */
 @media screen and (min-width: 576px) { 
@@ -173,7 +195,7 @@ hr.hrBottom {
   }
 
   a:hover{
-    color: black;
+    color: rgb(85, 84, 84);
   }
 
   .mediumImage {
@@ -195,7 +217,6 @@ hr.hrBottom {
 
   footer p{
     line-height: 1.5;
-
     margin: 10px auto 10px 20px;
     text-align: left;
   }
@@ -237,7 +258,7 @@ hr.hrBottom {
   }
 
   a:hover{
-    color: black;
+    color: rgb(85, 84, 84);
   }
 
   .mediumImage {
