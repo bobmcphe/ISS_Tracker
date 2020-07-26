@@ -91,7 +91,7 @@ function APOD(obj){
     this.copyright = obj.copyright;
     this.date = obj.date;
     this.title = obj.title;
-    this.url = obj.hdurl;
+    this.url = obj.url;
 }
 
 //constructor function that takes in ISS Location info
@@ -139,6 +139,8 @@ function handleResults (req, res){
     // API query parameters
     // ----------------------------------------------
 
+    let date = new Date('2013-03-10T02:00:00Z');
+    let dateOnly = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();  
     const cityParameters = {
         key:GEOCODE,
         q: req.query.city,
@@ -153,9 +155,10 @@ function handleResults (req, res){
     };
 
     const nasaParameters = {
-        api_key: NASA_KEY
+        api_key: NASA_KEY,
+        date: dateOnly
     };
-
+    
     // ----------------------------------------------
     // API Queries with parameters
     // ----------------------------------------------
