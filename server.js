@@ -125,7 +125,7 @@ function handleResults (req, res){
         key:GEOCODE,
         q: req.query.city,
         format: 'json'
-      };
+    };
 
     const weatherParameters = {
         city: req.query.city,
@@ -147,8 +147,8 @@ function handleResults (req, res){
     const api4 = superagent.get(API_weather).query(weatherParameters);
     
     Promise.all([api1, api2, api3, api4])
-      .then(data => {
-          console.log(data[3].body);
+    .then(data => {
+        console.log(data[3].body);
         //run APOD data through Constructor
         const astronamyPic = new APOD(data[0].body);
 
@@ -171,14 +171,14 @@ function handleResults (req, res){
         };
 
         superagent.get(API_issPasses)
-              .query(passesParameters)
-              .then(data => {
+            .query(passesParameters)
+            .then(data => {
                 let passData = data.body.response.map(pass => {
                     return new Passes(pass);
                 });
                 console.log(passData);
                 res.render('pages/results',{ pic:astronamyPic, issPosition:issPosition, location:cityData, weather: weatherData, issPasses: passData });
-              });
+            });
     });
     
 }
@@ -195,7 +195,7 @@ function handleInfo (req, res){
 function noFindHandler(req, res){
     res.status(404).send('Sorry, cannot find what you are looking for');
 }
-      
+    
 function errorHandler (err, req, res){
     res.status(500).send('Sorry, something went REALLY wrong', err);
 }
