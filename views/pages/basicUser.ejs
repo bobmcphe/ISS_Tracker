@@ -5,6 +5,7 @@
   <link rel="stylesheet" href = "styles/reset.css">
   <link rel="stylesheet" type="text/css" href="styles/lp-and-basicUser-styles.css">
 
+
 </head>
 
 <nav>
@@ -28,9 +29,14 @@
   <div class = "pass-times-query">
 
       <form method="get" action="/basic/results">   
+        <input type = "hidden" name = "city" value = "<%= city %>">
       <button id = "query-pass" type="submit">See My Passes</button>
       </form>
     
+  </div>
+  
+  <div>
+    <img class = "largeImage" src = "/icons-pretty-pics/the-world-from-a-distance.jpeg" alt = "Carl Sagan Quote">
   </div>
 
   <footer>
@@ -39,5 +45,3 @@
   </footer>
   
   </body>
-    
-

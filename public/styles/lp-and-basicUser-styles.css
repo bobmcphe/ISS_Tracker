@@ -57,7 +57,7 @@ input, #query-pass{
 /* No Need for LP Media Queries */
 /* ////////////////// */
 
-/*//////////// Basic User and Radio and Result Styling ////////////*/
+/*//////////// Basic User Styling ////////////*/
 
 * {
   color: black;
@@ -84,14 +84,16 @@ nav ul {
 }
 
 #greeting h1{
-  margin: 10px auto;
+  margin: 20px auto;
   color: black;
 }
 
-.apod {
+.apod,.issMap{
   max-width: 350px;
   margin: 30px auto;
 }
+
+
 
 a, p {
   font-size: small;
@@ -150,3 +152,18 @@ footer {
   width: 100%;
   background-color:gray;
   }
+
+
+  /* ////// Result  and Radio Styling //// */
+
+.wxIcon {
+  width: 50px;
+  margin: 10px 20px;
+  animation: none;
+
+}
+
+.issMap {
+  width: 400px;
+
+}
