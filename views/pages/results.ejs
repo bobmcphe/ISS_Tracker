@@ -25,6 +25,20 @@
     <img class = "apod" src="<%= pic.url%>" alt="Astronomy pic of day"> 
   </div>
   <main>
+
+    <div class="decision">
+      <% if (weather.day.description == "Clear sky") || (weather.day.description == "Few clouds")
+      <h2>Your Weather for <%= location.formatted_query %></h2>
+      <hr>
+      <% weather.forEach(day => { %>
+        <h3> <%= day.date %> </h3>
+        <img src="<%= day.weatherIconURL%>" class = "wxIcon" alt = "weather icon">
+        <h3> <%= day.description %> </h2>
+        <h3> <%= day.temp %> </h3>
+        <hr>
+      <%})%>
+    </div>
+  
       
   <div class="weather">
     <h2>Your Weather for <%= location.formatted_query %></h2>
@@ -38,12 +52,23 @@
     <%})%>
   </div>
 
+  <div class="sunrise-set">
+    <h2>Your Sunrise/Sunset Time for <%= location.formatted_query %></h2>
+    <hr>
+    <% xxxx.forEach(day => { %>
+      <h3> <%= day.date %> </h3>
+      <h3> <%= day..time %> </h2>
+      <hr>
+    <%})%>
+  </div>
+
+
   <div class="pass-times">
     <h2>Your Next Few Passes for <%= location.formatted_query %></h2>
     <hr>
     <% issPasses.forEach(pass => { %>
       <h3> <%= pass.date %> </h3>
-      <h3> <%= pass.time %> </h2>
+      <h3> <%= pass.time %> </h3>
       <h3> <%= pass.duration %> minutes</h3>
       <hr>
     <%})%>
