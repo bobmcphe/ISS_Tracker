@@ -1,0 +1,61 @@
+  /* default view mobile <= 400-576px */
+
+
+* {
+    color: black;
+    font-size: small;
+}
+
+body {
+background-color: whitesmoke;
+}
+
+a, p {
+    font-size: small;
+    text-decoration: none; 
+}
+
+
+
+
+/* tablet size 576-992px */
+@media screen and (min-width: 576px) { 
+    body {
+        background-color: whitesmoke;
+    }
+
+    
+    a {
+        margin: auto 30px;
+        font-size: medium;
+        text-decoration: none; 
+        color: whitesmoke; 
+    }
+
+    a:hover{
+        color: rgb(85, 84, 84);
+    }
+
+
+}
+
+
+/* large screen 992px+ */
+
+@media screen and (min-width: 992px) { 
+
+    body {
+        background-color: whitesmoke;
+    }
+
+    a {
+        margin: auto 30px;
+        font-size: large;
+        text-decoration: none; 
+        color: whitesmoke; 
+    }
+    
+    a:hover{
+        color: rgb(85, 84, 84);
+    }
+}

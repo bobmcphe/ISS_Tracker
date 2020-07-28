@@ -1,0 +1,75 @@
+  /* default view mobile <= 400-576px */
+
+footer p, footer a{
+    line-height: 1.5;
+    text-align: left;
+    color: whitesmoke;
+    margin-left: 20px;
+}
+
+
+footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color:gray;
+}
+
+footer a {
+
+    float: right;
+    margin-top: -40px;
+}
+
+/* instructions said to not include in modules.css a semantic, or relatively semantic-less elements */
+img {
+    margin: 20px 10px;
+}
+
+div {
+    background-color: black;
+    border-radius: 3px;
+}
+
+
+/* tablet size 576-992px */
+@media screen and (min-width: 576px) { 
+
+    div{
+        width: 200px;
+        margin: 0 auto;
+    }
+    
+
+}
+
+/* large screen 992px+ */
+
+@media screen and (min-width: 992px) { 
+
+    nav ul {
+        display: flex;
+        margin: 30px auto 30px 100px;
+        margin-top: 0%;
+        margin-left: 0%;
+    }
+
+    footer p{
+        line-height: 2.5;
+        margin: 10px auto 10px 20px;
+        text-align: left;
+        font-size: 15px;
+        
+    }
+    
+    
+    footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: black;
+        color: white;
+    }
+}
