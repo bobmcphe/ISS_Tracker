@@ -99,15 +99,39 @@ hr.hrBottom {
 }
 
 .bioPics {
-    width: 200px;
+    width: 600px;
     background-color: pink;
-    margin-bottom: 150px;
+    /* margin-right: 100px; */
+    word-wrap: break-word;
+    max-height: 250px;
+}
+
+.bioPics p {
+    color: red;
+    font-size: larger;
+    display: inline-block;
+
+}
+
+.bioPics img {
+    float: left;
+    width: 25px;
 }
 
 #bioMain {
     margin-left: 0px;
     background-color: yellow;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#APOD {
+    /* margin-right: 700px; */
+    width: 33%;
+    margin-left: 33%;
+    margin-right: 33%;
 }
 
 
