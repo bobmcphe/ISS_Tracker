@@ -2,7 +2,6 @@
 
 /* //////////////LP Styling ///////////////*/
 
-
 #LP{
     background-color: grey;
 }
@@ -211,11 +210,15 @@ footer {
 
 /* ////// ResultsStyling //// */
 
-/* WHAT"S WITH THE GUTTER??? */
 
-.apod,.issMap {
-/* width: 100%; */
-margin: 2em auto;
+.apod,.issMap, .viewing, .radio{
+width: 100%;
+margin: 2em;
+}
+
+.viewing, .radio{
+  text-indent: 3em;
+  line-height: 1.3;
 }
 
 
@@ -241,10 +244,6 @@ margin: 2em auto;
   margin: .5em auto ;
 }
 
-.decision {
-  text-align: center;
-
-}
 
 .weather h2 {
   padding-top: 1.5em;
@@ -272,7 +271,7 @@ hr.hrBottom2 {
 }
 
 .cosmoImage {
-  width: 275px;
+  width: 280px;
 }
 
 #patch {
@@ -287,7 +286,7 @@ hr.hrBottom2 {
   flex-direction: row;
   justify-content: space-around;
   text-align: center;
-  margin: 30px auto;
+  margin: 2em 0em 2em 4em;
 }
 
 figcaption{
@@ -298,6 +297,7 @@ figcaption{
   border-bottom-right-radius: 3px;
   padding-top: .5em;
   text-align: center;
+  width: 100%;
 }
 
 figcaption a {
@@ -323,7 +323,32 @@ ul a:hover{
 
 hr.hrFull {
   height: 12px;
-  width: 90%;
-  border: 0;
+  margin: 2em 0 .5em 1.5em;
+
+  width: 100%;
+  border: 0 ;
   box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
 }
+
+#country-map figcaption {
+  width: 100%;
+  margin: -2em 0 2em 1.5em;
+}
+
+.trivia {
+  padding: 2em 0;
+  margin: 2em 0
+}
+
+.facts li, .callsigns li{
+  font-size: 1em;
+  margin: 2em 0 .5em 2.5em;
+  line-height: 1.2;
+
+}
+
+.facts, .callsigns{
+  list-style: square inside ;
+  margin-left: 2em;
+}
+
