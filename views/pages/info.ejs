@@ -3,31 +3,27 @@
 <head>
   <title>Fun Facts and ISS Info</title>
   <link rel="stylesheet" href = "styles/reset.css">
-  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/styling.css">
 
 </head>
 
 <body>
   <header>
     
-    <%- include('partials/header') %>
-    <!-- Partial to be inserted into each page in the header section or other
-depending on what makes sense with CSS-->
-
-  <!-- <nav>
-    <a href = "/"> <img class = "icon active logo" src = "/icons-pretty-pics/icon-small-ISS.png"> </a>
-    <ul>
-
-        <li> <a href = "pages/basicUser"> Your Passes </a></li>
-        <li> <a href = "pages/radio"> Radio User</a></li>
-        <li> <a href = "pages/info">Fun Facts</a></li>
-        <li> <a href = "pages/aboutUs">Meet The Team</a></li> 
-    </ul>
-  </nav> -->
-
+    <nav>
+      <a href = "/"> <img class = "icon active logo" src = "/icons-pretty-pics/icon-small-ISS.png"> </a>
+      <ul>
+    
+          <li> <a href = "pages/basicUser"> Your Passes </a></li>
+          <li> <a href = "info">Fun Facts</a></li>
+      </ul>
+    
+      <hr class = "hrBottom">
+    
+    </nav>
+    
   </header>
 
-  <hr class="hrTop">
   <main>
     <!-- This section has 2 Astronaut pics and bios -->
 
@@ -47,31 +43,35 @@ depending on what makes sense with CSS-->
     </section>
     <section id = "cosmonauts">
       <div>
-        <img src = "/astronauts/anatolyIvanishin.jpg" class = "mediumImage" target = "_blank" alt = "Pic and Bio Anatoly Ivanishin">
+        <img src = "/astronauts/anatolyIvanishin.jpg" class = "cosmoImage" target = "_blank" alt = "Pic and Bio Anatoly Ivanishin">
         <figcaption><a href = "http://www.gctc.ru/main.php?id=177" target = "_blank"> Anatoly Ivanishin</a></figcaption>
       </div>
       
-      <div><img src = "/astronauts/exp-63-patch.png" id = "patch">
-        <figcaption><a href = "https://www.nasa.gov/astronauts/biographies/active" target = "_blank"> All Astronauts</a></figcaption>
+      <div><img src = "/astronauts/exp-63-patch.png" id = "patch" class = "cosmoImage">
+        <figcaption><a href = "https://www.nasa.gov/astronauts/biographies/active" target = "_blank"> All Astronaut Bios</a></figcaption>
       </div>
       
 
       <div>
-        <img src = "/astronauts/ivanVagner.jpg" class = "mediumImage" target = "_blank" alt = "Pic and Bio Ivan Vagner">
+        <img src = "/astronauts/ivanVagner.jpg" class = "cosmoImage" target = "_blank" alt = "Pic and Bio Ivan Vagner">
         <figcaption><a href = "http://www.gctc.ru/main.php?id=164" target = "_blank"> Ivan Vagner</a></figcaption>
       </div>
     </section>
 
-    <hr class="hrBottom">
+    
+    <div id = "country-map">
+      <img src = "/icons-pretty-pics/iss-by-country.jpg">
+      <figcaption><a href = "https://www.nasa.gov/feature/visitors-to-the-station-by-country/" target = "_blank"> Learn More</a></figcaption>
+    </div>
 
+    
+    
+    <hr class="hrFull">
   </main>
-  <!-- Partial to be inserted into each page in the body section or just after
-depending on what makes sense with CSS-->
-<%- include('partials/footer') %>
 
-<!-- <footer>
-  <a href = "pages/aboutUs">Meet The Team</a>
+<footer>
+  <a href = "aboutUs">Meet The Team</a>
   <p> &copy 2020: Ashley Casimir, Kim Damalas, Bobby McPherson</p>
-</footer> -->
+</footer>
 </body>
 

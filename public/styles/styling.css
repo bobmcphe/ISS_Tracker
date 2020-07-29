@@ -2,6 +2,7 @@
 
 /* //////////////LP Styling ///////////////*/
 
+
 #LP{
     background-color: grey;
 }
@@ -86,7 +87,7 @@ input, #query-pass{
   width: 90%;
   position: fixed;
   text-align: center;
-  top: 70%;  
+  top: 68%;  
 }
 
 /* No Need for LP Media Queries */
@@ -260,4 +261,69 @@ hr.hrBottom2 {
   height: 12px;
   box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
   margin: 2.5em;
+}
+
+/* ////////////// INFO PAGE //////////////// */
+
+.mediumImage {
+  max-width: 270px;
+  border: gray solid 3px;
+  border-radius: 3px;
+}
+
+.cosmoImage {
+  width: 275px;
+}
+
+#patch {
+  border: none;
+  width: 280px;
+  margin-top: 12px;
+  margin-bottom: 52px;
+}
+
+#astroBios, #cosmonauts{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+  margin: 30px auto;
+}
+
+figcaption{
+  background-color: #A9A9A9;
+  height: 3em;
+  font-size: 1.3em;  
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  padding-top: .5em;
+  text-align: center;
+}
+
+figcaption a {
+  color:whitesmoke;
+}
+
+#astroBios{
+  margin-top: 7%;
+}
+
+#cosmonauts{
+  margin-bottom: 7%
+}
+
+#astroBios a:hover, #cosmonauts a:hover, ul a:hover{
+  color: gray;
+}
+
+ul a:hover{
+  color: white;
+  background-color: black;
+}
+
+hr.hrFull {
+  height: 12px;
+  width: 90%;
+  border: 0;
+  box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
 }

@@ -48,7 +48,6 @@ Stretch: we may provide the user the ability to save Astronomy Pics of the Day u
 
 ![Link to Basic User Page](public/assets/wireframes/Basic-User.png)
 
-![Link to Radio User Page](public/assets/wireframes/Radio-User.png)
 
 ![Link to Info Page](public/assets/wireframes/Info.png)
 
