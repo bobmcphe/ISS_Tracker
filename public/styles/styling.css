@@ -138,10 +138,10 @@ a, p {
 
 nav ul a {
   line-height: 1.5;
-  font-size: 3em;
-  color: black;
+  font-size: 2.5em;
+  color: whitesmoke;
   margin: 15px;
-  /* background-color: #A9A9A9	; */
+  background-color: #A9A9A9	;
   padding: .4em;
   /* border: black solid 1px;
   border-radius: 5px; */
@@ -381,3 +381,28 @@ hr.hrFull {
   margin-left: 2em;
 }
 
+/* ////////////// ABOUT US //////////////// */
+
+
+.bioPics {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0em 0em 5em 2.5em;
+}
+
+.bioPics p {
+  margin-left: 3em;
+  font-size: 3em;
+}
+
+.bioPics img {
+    max-width: 250px;
+    border: gray solid 3px;
+    border-radius: 3px;  
+}
+
+#abFooter {
+  height: 4.25em;
+  margin-top: 0em;
+}
