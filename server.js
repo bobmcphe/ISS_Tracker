@@ -115,7 +115,6 @@ function handleBasic (req, res){
 
     client.query(SQL, values) //sends it to the DB
         .then( (results) => {
-            console.log(results);
             res.render('pages/basicUser', {city: req.body.city, name: req.body.name});
         })
         .catch (error => {
@@ -139,7 +138,7 @@ function handleResults (req, res){
     // API query parameters
     // ----------------------------------------------
 
-    let date = new Date('2013-03-10T02:00:00Z');
+    let date = new Date();
     let dateOnly = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();  
     const cityParameters = {
         key:GEOCODE,
@@ -256,11 +255,13 @@ function handleResults (req, res){
 }
 
 function handleAboutUs (req, res){
-    res.render('pages/aboutUs');
+    let city = req.query.city;
+    res.render('pages/aboutUs',{city});
 }
 
 function handleInfo (req, res){
-    res.render('pages/info');
+    let city = req.query.city;
+    res.render('pages/info', {city});
 }
 
 function noFindHandler(req, res){
