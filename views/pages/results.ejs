@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <head>
     <title>Location-Specific Results</title>
-    <!-- <link rel="stylesheet" type="text/css" href="styles/styles.css"> -->
     <link rel="stylesheet" href = "/styles/reset.css">
     <link rel="stylesheet" type="text/css" href="/styles/lp-and-basicUser-styles.css">
 
@@ -13,56 +12,68 @@
       <a href = "/"> <img class = "icon active logo"  id = "nav-spin" src = "/icons-pretty-pics/icon-small-ISS.png"> </a>
       <ul>
   
-          <li> <a href = "pages/basicUser"> Your Passes </a></li>
-          <li> <a href = "pages/radio"> Radio User</a></li>
-          <li> <a href = "pages/info">Fun Facts</a></li>
+          <li> <a href = "/basicUser"> Your Passes </a></li>
+          <li> <a href = "/info">Fun Facts</a></li>
       </ul>
     </nav>
+
+    <hr class = "hrBottom">
+
   
   </header>
   
   <div>
     <img class = "apod" src="<%= pic.url%>" alt="Astronomy pic of day"> 
   </div>
-  <main>
-      
-  <div class="weather">
-    <h2>Your Weather for <%= location.formatted_query %></h2>
-    <hr>
-    <% weather.forEach(day => { %>
-      <h3> <%= day.date %> </h3>
-      <img src="<%= day.weatherIconURL%>" class = "wxIcon" alt = "weather icon">
-      <h3> <%= day.description %> </h2>
-      <h3> <%= day.temp %> </h3>
-      <hr>
-    <%})%>
-  </div>
+  <main id = "results">
 
-  <div class="pass-times">
-    <h2>Your Next Few Passes for <%= location.formatted_query %></h2>
-    <hr>
-    <% issPasses.forEach(pass => { %>
-      <h3> <%= pass.date %> </h3>
-      <h3> <%= pass.time %> </h2>
-      <h3> <%= pass.duration %> minutes</h3>
-      <hr>
+    <h2 class = "headline">Your Best View in <br><%= location.formatted_query %></h2>
+    <div class="decision">
+      <p>IF LOGIC GOES HERE</p>
+    </div>
+  
+      
+    <h2 class = "headline">Your Weather</h2>
+    
+    <% weather.forEach(day => { %>
+    <div class="weather">
+      <h2> <%= day.date %> </h2>
+      <img src="<%= day.weatherIconURL%>" class = "wxIcon" alt = "weather icon">
+      <h2> <%= day.description %> </h2>
+      <h2> <%= day.temp %> </h2>
+    </div>
     <%})%>
-  </div>
+
+
+
+    <h2 class = "headline">Your Next Few Passes</h2>
+    <% issPasses.forEach(pass => { %>
+    <div class="pass-times">
+      <h3> <%= pass.date %> </h3>
+      <h3> <%= pass.time %> </h3>
+      <h3> <%= pass.duration %> minutes</h3>
+      <hr class = "hrBottom2">
+    </div>
+    <%})%>
 
   <!-- //////form for 3rd party text mgs///// -->
 
+  <h2 class = "headline">Right now, the ISS is over: </h2>
+  <hr class = "hrBottom2">
+
   <div >
-      <h2>Right now, the ISS is over: </h2>
       <img class = "issMap" src = "/icons-pretty-pics/ground-track.png">
   </div>
 
+  <!-- <div> -->
+  <!-- <canvas id='rotatingGlobe' width='400' height='400'
+  style='width: 400px; height: 400px; cursor: move;'></canvas> -->
+  <!-- </div> -->
+  
   </main>
 
-      <!-- <footer>  INSERT PARTIAL</footer> -->
-
-
 <footer>
-  <a href = "pages/aboutUs">Meet The Team</a>
+  <a href = "/aboutus">Meet The Team</a>
   <p> &copy 2020: Ashley Casimir, Kim Damalas, Bobby McPherson</p>
 </footer>
 </body>
