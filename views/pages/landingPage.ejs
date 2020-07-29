@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <head>
     <title>ISS Tracker</title>
-    <link rel="stylesheet" type="text/css" href="styles/lp-and-basicUser-styles.css">
-    <!-- <link rel="stylesheet" type="text/css" href="styles/styles.css"> -->
+    <link rel="stylesheet" type="text/css" href="styles/styling.css">
 </head>
 <body id = "LP">
     <header>
@@ -21,6 +20,41 @@
         <input type = "image" class = "icon active" id = "lp-button" src = "/icons-pretty-pics/icon-small-ISS.png">
       </form>
     </div>
+
+  <div id = "anniversary">
+    <h1 id = "LPh2"> The 20th Anniversary of the First ISS Crew Arrival</h1>
+    <div id= "countdown">
+    </div>
+  </div>
+
+
+    <script>
+      function countdownTimer() {
+        const difference = +new Date("2020-11-03") - +new Date();
+        let remaining = "Time's up!";
+
+        if (difference > 0) {
+          const parts = {
+            days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+            hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+            mins: Math.floor((difference / 1000 / 60) % 60),
+            secs: Math.floor((difference / 1000) % 60)
+          };
+
+          remaining = Object.keys(parts)
+            .map(part => {
+              if (!parts[part]) return;
+              return `${parts[part]} ${part}`;
+            })
+            .join(" ");
+        }
+
+        document.getElementById("countdown").innerHTML = remaining;
+      }
+
+      countdownTimer();
+      setInterval(countdownTimer, 1000);
+    </script>
     </main>
 </body>
 </html>

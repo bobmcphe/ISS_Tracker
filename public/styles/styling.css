@@ -1,4 +1,4 @@
-  /* default view mobile <= 414-576px */
+  /* default view mobile <= iphone 8 on Chrome 375 x 667px */
 
 /* //////////////LP Styling ///////////////*/
 
@@ -11,7 +11,18 @@
   text-align: center;
   margin: 40px;
   color: whitesmoke;
+  font-weight: 200;
 }
+
+#LPh2 {
+  font-size: 3.5em;
+  text-align: center;
+  margin: 5em auto;
+  color: whitesmoke;
+  width: 90%;
+  font-weight: 200;
+}
+
 
 #iss-video {
   position: fixed;
@@ -67,6 +78,15 @@ input, #query-pass{
 @keyframes spin {
   from {transform:rotate(0deg);}
   to {transform:rotate(360deg);}
+}
+
+#countdown {
+  color: blue;
+  font-size: 4em;
+  width: 90%;
+  position: fixed;
+  text-align: center;
+  top: 70%;  
 }
 
 /* No Need for LP Media Queries */
