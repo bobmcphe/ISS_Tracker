@@ -2,12 +2,13 @@
 
 /* //////////////LP Styling ///////////////*/
 
+
 #LP{
     background-color: grey;
 }
 
 #LPh1 {
-  font-size: 5em;
+  font-size: 4em;
   text-align: center;
   margin: 40px;
   color: whitesmoke;
@@ -83,7 +84,7 @@ input, #query-pass{
 #countdown {
   color: blue;
   font-size: 4em;
-  width: 90%;
+  width: 100%;
   position: fixed;
   text-align: center;
   top: 68%;  
@@ -123,7 +124,11 @@ nav ul {
 
 nav{
   margin: 3em;
-  width: 90%;
+  /* width: 90%; */
+}
+
+.scroll {
+  width: 100%;
 }
 
 a, p {
@@ -133,12 +138,13 @@ a, p {
 
 nav ul a {
   line-height: 1.5;
+  font-size: 3em;
   color: black;
   margin: 15px;
-  background-color: #A9A9A9	;
+  /* background-color: #A9A9A9	; */
   padding: .4em;
-  border: black solid 1px;
-  border-radius: 5px;
+  /* border: black solid 1px;
+  border-radius: 5px; */
   
 }
 ul a:hover{
@@ -149,7 +155,7 @@ ul a:hover{
 hr.hrBottom {
   height: 12px;
   box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
-  margin: 2.5em 2em 2em 12em;
+  margin: 3em 2em 2em 12em;
 }
 .icon, .active, #nav-spin{
   width: 130px;
@@ -210,10 +216,13 @@ footer {
 
 /* ////// ResultsStyling //// */
 
+#results-nav {
+  width: 100%;
+}
 
 .apod,.issMap, .viewing, .radio{
 width: 100%;
-margin: 2em;
+margin: 2.5em 2em 2.5em 2.75em;
 }
 
 .viewing, .radio{
@@ -229,13 +238,12 @@ margin: 2em;
 }
 
 .headline {
-  /* font-size: 3em; */
   color: whitesmoke;
   background-color: gray;
   padding: 1em;
   line-height: 1.2;
   width: 100%;
-  margin: none;
+  margin: auto 0 auto .25em;
 }
 .weather {
   display: flex;
@@ -253,19 +261,37 @@ margin: 2em;
 .pass-times {
   line-height: 1.5;
   font-size: 1.5em;
+  margin-top: 2em;
   text-align: center;
 }
 
 hr.hrBottom2 {
   height: 12px;
   box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
-  margin: 2.5em;
+  width: 70%;
+  margin: 2em auto; 
 }
+
+.callsigns{
+  list-style: square inside ;
+  margin-left: 18em;
+}
+
+#callsigns {
+  text-indent: none;
+  margin: 0em 0em 2em 10em;
+}
+
+.radio-div {
+  width: 50%;
+  margin: 2.5em 2em 2.5em 18em;
+}
+
 
 /* ////////////// INFO PAGE //////////////// */
 
 .mediumImage {
-  max-width: 270px;
+  max-width: 280px;
   border: gray solid 3px;
   border-radius: 3px;
 }
@@ -286,7 +312,10 @@ hr.hrBottom2 {
   flex-direction: row;
   justify-content: space-around;
   text-align: center;
-  margin: 2em 0em 2em 4em;
+  margin-top: 3em;
+  margin-left: 3em;
+  width: 100%;
+
 }
 
 figcaption{
@@ -323,7 +352,7 @@ ul a:hover{
 
 hr.hrFull {
   height: 12px;
-  margin: 2em 0 .5em 1.5em;
+  margin: 2em 0 .5em 1.9em;
 
   width: 100%;
   border: 0 ;
@@ -332,7 +361,7 @@ hr.hrFull {
 
 #country-map figcaption {
   width: 100%;
-  margin: -2em 0 2em 1.5em;
+  margin: -2.5em 0 2em 1.9em;
 }
 
 .trivia {
@@ -347,7 +376,7 @@ hr.hrFull {
 
 }
 
-.facts, .callsigns{
+.facts{
   list-style: square inside ;
   margin-left: 2em;
 }
