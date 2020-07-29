@@ -1,5 +1,5 @@
 
-  /* default view mobile <= 400-576px */
+  /* default view mobile <= 414-576px */
   
   * {
     color: black;
@@ -14,10 +14,8 @@
   nav ul {
     display: flex;
     justify-content: center;
-    /* background-color: gray; */
     height: 20px;
     padding: 15px;
-    /* border-bottom: 1px solid gray; */
     
   }
 
@@ -295,4 +293,4 @@ hr.hrBottom {
     width: 100%;
     background-color: black;
     color: white;
-  }
+    }

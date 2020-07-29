@@ -1,0 +1,28 @@
+  /* default view mobile <= 400-576px */
+
+.icon, .active {
+    width: 50px;
+    margin: 10px 20px;
+    animation-name: spin;
+    animation-duration: 1.5s;
+    animation-iteration-count: 2;
+}
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+
+
+
+/* tablet size 576-992px */
+@media screen and (min-width: 576px) { 
+
+}
+
+/* large screen 992px+ */
+
+@media screen and (min-width: 992px) { 
+
+}
