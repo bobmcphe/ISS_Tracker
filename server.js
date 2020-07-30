@@ -203,7 +203,7 @@ function handleResults (req, res){
                                 let passData = data.body.response.map(pass => {
                                     return new Passes(pass);
                                 });
-                                res.render('pages/results',{ pic:astronamyPic, issPosition:issPosition, location:cityData, weather: weatherData, issPasses: passData });
+                                res.render('pages/results',{ pic:astronamyPic, issPosition:issPosition, location:cityData, weather: weatherData, issPasses: passData, GEOCODE});
                             });
                     });
 
