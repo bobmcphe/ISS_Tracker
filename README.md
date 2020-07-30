@@ -28,11 +28,11 @@ See also [requirements](requirements.md) in our repo
 
 
 ## Domain Modeling
-![I am the link for the domain mapping image, I hope?](assets/domain-model.jpeg)
+![I am the link for the domain mapping image, I hope?](./public/assets/domain-model.jpeg)
 
 
 ## Databse Entity Relationship 
-![Diagram](assets/savedTracker-ex.png)
+![Diagram](./public/assets/savedTracker-ex.png)
 
 We have a database, ISS_Tracker, with one table,  savedTracker.  The table is used to save login name and city.  Users are required to enter these 2 pieces of info before they can access the site.
 
@@ -48,7 +48,6 @@ Stretch: we may provide the user the ability to save Astronomy Pics of the Day u
 
 ![Link to Basic User Page](public/assets/wireframes/Basic-User.png)
 
-![Link to Radio User Page](public/assets/wireframes/Radio-User.png)
 
 ![Link to Info Page](public/assets/wireframes/Info.png)
 

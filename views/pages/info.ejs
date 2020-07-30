@@ -3,7 +3,7 @@
 <head>
   <title>Fun Facts and ISS Info</title>
   <link rel="stylesheet" href = "styles/reset.css">
-  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/styling.css">
 
 </head>
 
@@ -38,7 +38,7 @@
 
   </header>
 
-  <hr class="hrTop">
+
   <main>
     <!-- This section has 2 Astronaut pics and bios -->
 
@@ -58,31 +58,56 @@
     </section>
     <section id = "cosmonauts">
       <div>
-        <img src = "/astronauts/anatolyIvanishin.jpg" class = "mediumImage" target = "_blank" alt = "Pic and Bio Anatoly Ivanishin">
+        <img src = "/astronauts/anatolyIvanishin.jpg" class = "cosmoImage" target = "_blank" alt = "Pic and Bio Anatoly Ivanishin">
         <figcaption><a href = "http://www.gctc.ru/main.php?id=177" target = "_blank"> Anatoly Ivanishin</a></figcaption>
       </div>
       
-      <div><img src = "/astronauts/exp-63-patch.png" id = "patch">
-        <figcaption><a href = "https://www.nasa.gov/astronauts/biographies/active" target = "_blank"> All Astronauts</a></figcaption>
+      <div><img src = "/astronauts/exp-63-patch.png" id = "patch" class = "cosmoImage">
+        <figcaption><a href = "https://www.nasa.gov/astronauts/biographies/active" target = "_blank"> All Astronaut Bios</a></figcaption>
       </div>
       
 
       <div>
-        <img src = "/astronauts/ivanVagner.jpg" class = "mediumImage" target = "_blank" alt = "Pic and Bio Ivan Vagner">
+        <img src = "/astronauts/ivanVagner.jpg" class = "cosmoImage" target = "_blank" alt = "Pic and Bio Ivan Vagner">
         <figcaption><a href = "http://www.gctc.ru/main.php?id=164" target = "_blank"> Ivan Vagner</a></figcaption>
       </div>
     </section>
 
-    <hr class="hrBottom">
+    <hr class="hrFull">
+
+
+    <div id = "country-map" >
+      <img class = "apod" src = "/icons-pretty-pics/iss-size.png">
+      <figcaption><a href = "https://www.nasa.gov/sites/default/files/atoms/files/iss20_infographic_david_20200713_compressed.pdf" target = "_blank"> Learn More</a></figcaption>
+    </div>
+
+    <div id = "country-map" >
+      <img class = "apod" src = "/icons-pretty-pics/country-infographic.png">
+      <figcaption><a href = "https://www.nasa.gov/feature/visitors-to-the-station-by-country/" target = "_blank"> Learn More</a></figcaption>
+    </div>
+
+
+    
+    <!-- <hr class="hrFull"> -->
+
+    <div class = "trivia">
+      <ul class = "facts">
+        <li>Peggy Whitson set the record for spending the most total time living and working in space at 665 days on Sept. 2, 2017</li>
+        <li>Astronauts and cosmonauts have conducted 230 spacewalks (and counting!) for space station construction</li>
+        <li>An international crew of six people live and work while traveling at a speed of five miles per second, orbiting Earth about every 90 minutes.</li>
+        <li>ISS orbits at approximately 220 miles (350 km) above the Earth and it travels at an average speed of 17,227 miles (27,724 km) per hour.</li>
+        <li>More than 50 computers control the systems on the space station.</li>
+        <li>More than 3 million lines of software code on the ground support more than 1.5 million lines of flight software code.</li>
+      </ul>
+    </div>
+
+    <!-- <hr class="hrFull"> -->
 
   </main>
-  <!-- Partial to be inserted into each page in the body section or just after
-depending on what makes sense with CSS-->
-<%- include('partials/footer') %>
 
-<!-- <footer>
-  <a href = "pages/aboutUs">Meet The Team</a>
-  <p> &copy 2020: Ashley Casimir, Kim Damalas, Bobby McPherson</p>
-</footer> -->
+<footer>
+  <a href = "aboutUs">Meet The Team</a>
+  <p> &copy 2020: Ashley Casimir, Bobby McPherson, Kim Damalas </p>
+</footer>
 </body>
 
