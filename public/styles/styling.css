@@ -115,9 +115,9 @@ h2, .headline {
   text-align: center;
 }
 
-nav ul {
+nav button {
   display: flex;
-  justify-content: flex-end;
+  justify-items: flex-end;
   padding: 15px;
 }
 
@@ -127,8 +127,16 @@ nav{
   /* width: 90%; */
 }
 
-.scroll {
-  width: 100%;
+button{
+  width: 30%;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  border: none;  
+  margin-left: 65%;
+  font-size: 2em;
+  background-color: whitesmoke;
+
 }
 
 a, p {
@@ -138,14 +146,10 @@ a, p {
 
 nav ul a {
   line-height: 1.5;
-  font-size: 2.5em;
-  color: whitesmoke;
+  font-size: 5em;
   margin: 15px;
-  background-color: #A9A9A9	;
   padding: .4em;
-  /* border: black solid 1px;
-  border-radius: 5px; */
-  
+  border: none;  
 }
 ul a:hover{
   color: white;
