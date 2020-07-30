@@ -76,12 +76,12 @@
     </div>
     <%})%>
     
-    <!-- //////form for 3rd party text mgs///// -->
     
     <h2 class = "headline">Right now, the ISS is over: </h2>
     
+    
     <div >
-      <img class = "issMap" src = "https://maps.locationiq.com/v2/staticmap?key=<%=GEOCODE%>&size=600x600&zoom=2&markers=<%=issPosition.lat%>,<%=issPosition.lon%>|icon:large-blue-cutout;&format=png">
+        <img class = "issMap" src = "https://maps.locationiq.com/v2/staticmap?key=<%=GEOCODE%>&size=600x600&zoom=2&markers=<%=issPosition.lat%>,<%=issPosition.lon%>|icon:large-blue-cutout;&format=png">
     </div>
     
     <h2 class = "headline">Info For Radio Users </h2>
@@ -105,9 +105,16 @@
           <li>European: DP0ISS, OR4ISS, IR0ISS</li>
         </ul>
 
-        <figcaption class = "radio-div" ><a href = " https://www.ariss.org/contact-the-iss.html" target = "_blank"> Learn More</a></figcaption>
-        
-      </div>
+  <div>
+      <ul class = "callsigns">
+        <li> Russian: RS0ISS</li>
+        <li>USA: NA1SS</li>
+        <li>European: DP0ISS, OR4ISS, IR0ISS</li>
+      </ul>
+
+    <figcaption class = "radio-div" ><a href = " https://www.ariss.org/contact-the-iss.html" target = "_blank"> Learn More</a></figcaption>
+      
+  </div>
   
   </main>
 
