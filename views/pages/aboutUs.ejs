@@ -6,17 +6,34 @@
 </head>
 <body>
     <header>
-    
-        <nav class = "scroll">
-          <a href = "/"> <img class = "icon active logo" src = "/icons-pretty-pics/icon-small-ISS.png"> </a>
-          <ul>
-              <li> <a href = "pages/basicUser"> Your Passes </a></li>
-          </ul>
-        
-        </nav>
-        
-      </header>
-     
+        <nav class= "scroll">
+            <a href = "/"> <img class = "icon active logo" src = "/icons-pretty-pics/icon-small-ISS.png"> </a>
+            <ul>
+              <li>
+                <form action="/basic/results">
+                  <input type="hidden" name="city" value=<%= city %>>
+                  <button type="submit">Your Passes</button>
+                </form>
+              </li>
+              <li>
+                <form action="/aboutus">
+                  <input type="hidden" name="city" value=<%= city %>>
+                  <button type="submit">About Us</button>
+                </form>
+              </li>
+              <li>
+                <form action="/info">
+                  <input type="hidden" name="city" value=<%= city %>>
+                  <button type="submit">Fun Facts</button>
+                </form>
+              </li>
+            </ul>
+          
+            <hr class = "hrBottom">
+          
+          </nav>
+    </header>
+ 
 
     <main id="bioMain">
         <section>
