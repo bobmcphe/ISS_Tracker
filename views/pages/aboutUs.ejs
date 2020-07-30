@@ -1,41 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISS Tracker</title>
+    <title>About Us</title>
     <link rel="stylesheet" href = "styles/reset.css">
-    <link rel="stylesheet" type="text/css" href="/styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="styles/styling.css">
 </head>
 <body>
     <header>
-        <%- include('partials/header') %>
+        <nav class= "scroll">
+            <a href = "/"> <img class = "icon active logo" src = "/icons-pretty-pics/icon-small-ISS.png"> </a>
+            <ul>
+              <li>
+                <form action="/basic/results">
+                  <input type="hidden" name="city" value=<%= city %>>
+                  <button type="submit">Your Passes</button>
+                </form>
+              </li>
+              <li>
+                <form action="/aboutus">
+                  <input type="hidden" name="city" value=<%= city %>>
+                  <button type="submit">About Us</button>
+                </form>
+              </li>
+              <li>
+                <form action="/info">
+                  <input type="hidden" name="city" value=<%= city %>>
+                  <button type="submit">Fun Facts</button>
+                </form>
+              </li>
+            </ul>
+          
+            <hr class = "hrBottom">
+          
+          </nav>
     </header>
  
 
     <main id="bioMain">
         <section>
-        <section id="APOD">
-            <img src="https://via.placeholder.com/650" alt="Astronomy pic of day"> <!--TODO NEEDS TO BE TEMPLATED  -->
+        <section >
+            <img class = "apod" src="icons-pretty-pics/iss-flyover.jpg" alt="ISS flyover pic"> <!--TODO NEEDS TO BE TEMPLATED  -->
         </section>
         </section>
 
         <section class="bioPics">
-            <img src="https://via.placeholder.com/150" alt="Ashley's Bio">
+            <img  src="https://via.placeholder.com/250" alt="Ashley's Bio">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci blanditiis officiis repudiandae laborum nulla ex sunt ut nemo, optio consectetur odit placeat. Odit earum doloribus est pariatur ad, maxime recusandae!</p>
         </section>
         <section class="bioPics">
-            <img src="https://via.placeholder.com/150" alt="Bobby's Bio">
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt consectetur vel vero dolore iure omnis reprehenderit sapiente eveniet eum accusantium minus, dolorem aperiam, ipsum natus rem soluta asperiores eligendi vitae!</p>
+            <img src="https://via.placeholder.com/250" alt="Bobby's Bio">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci blanditiis officiis repudiandae laborum nulla ex sunt ut nemo, optio consectetur odit placeat. Odit earum doloribus est pariatur ad, maxime recusandae!</p>
         </section>
         <section class="bioPics">
-            <img src="https://via.placeholder.com/150" alt="Kim's Bio">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit temporibus ullam nesciunt facere provident fuga voluptate modi. Placeat, temporibus, maxime quaerat iusto culpa obcaecati ipsam mollitia consequuntur, aliquam quidem veniam.</p>
+            <img src="https://via.placeholder.com/250" alt="Kim's Bio">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci blanditiis officiis repudiandae laborum nulla ex sunt ut nemo, optio consectetur odit placeat. Odit earum doloribus est pariatur ad, maxime recusandae!</p>
         </section>
     </main>
-    <footer>
-        <a href = "/aboutus">Meet The Team</a>
-        <p> &copy 2020: Ashley Casimir, Kim Damalas, Bobby McPherson</p>
+    <footer id = "abFooter">
+        <p> &copy 2020: Ashley Casimir, Bobby McPherson, Kim Damalas </p>
       </footer>
       
 </body>

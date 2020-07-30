@@ -2,34 +2,54 @@
 <head>
     <title>Location-Specific Results</title>
     <link rel="stylesheet" href = "/styles/reset.css">
-    <link rel="stylesheet" type="text/css" href="/styles/lp-and-basicUser-styles.css">
+    <link rel="stylesheet" type="text/css" href="/styles/styling.css">
 
 </head>
 <body>
   <header>
-    <!-- <nav>  INSERT PARTIAL</nav> -->
     <nav>
-      <a href = "/"> <img class = "icon active logo"  id = "nav-spin" src = "/icons-pretty-pics/icon-small-ISS.png"> </a>
+      <a href = "/"> <img class = "icon active logo" src = "/icons-pretty-pics/icon-small-ISS.png"> </a>
       <ul>
-  
-          <li> <a href = "/basicUser"> Your Passes </a></li>
-          <li> <a href = "/info">Fun Facts</a></li>
+        <li>
+          <form action="/aboutus">
+            <input type="hidden" name="city" value=<%= location.search_query%>>
+            <button type="submit">About Us</button>
+          </form>
+        </li>
+        <li>
+          <form action="/info">
+            <input type="hidden" name="city" value=<%= location.search_query%>>
+            <button type="submit">Fun Facts</button>
+          </form>
+        </li>
       </ul>
+    
+      <hr class = "hrBottom">
+    
     </nav>
-
-    <hr class = "hrBottom">
-
-  
-  </header>
+      </header>
   
   <div>
     <img class = "apod" src="<%= pic.url%>" alt="Astronomy pic of day"> 
   </div>
   <main id = "results">
 
-    <h2 class = "headline">Your Best View in <br><%= location.formatted_query %></h2>
-    <div class="decision">
-      <p>IF LOGIC GOES HERE</p>
+    <h2 class = "headline">Your Best Viewing for <br><%= location.formatted_query %></h2>
+    <div class="viewing">
+      <p> Since the ISS is the 3rd brightest object in the sky, it can often be seen even in urban areas
+        when it is in view at 40 degrees or higher. The best viewing is when it passes, over the viewer 
+        one hour after dusk or one hour before dawn. Longer passes and clear skies/few clouds are ideal.
+      </p>
+
+      <br>
+        
+        <p>Tip:   If you know the height in degrees at which the space station will appear, remember that 90 degrees is 
+        directly over your head. Any number less than 90 degrees will mean that the station will appear 
+        somewhere between the horizon and the 90 degree mark. Alternatively, you can stretch out your fist 
+        at arm’s length toward the horizon, which is equivalent to about 10 degrees. Then, just use the 
+        appropriate number of fist-heights to find the location marker, e.g., four fist-lengths from the 
+        horizon would be equivalent to about 40 degrees.
+      </p>
     </div>
   
       
@@ -55,25 +75,48 @@
       <hr class = "hrBottom2">
     </div>
     <%})%>
+    
+    <!-- //////form for 3rd party text mgs///// -->
+    
+    <h2 class = "headline">Right now, the ISS is over: </h2>
+    
+    <div >
+      <img class = "issMap" src = "/icons-pretty-pics/ground-track.png">
+    </div>
+    
+    <h2 class = "headline">Info For Radio Users </h2>
 
-  <!-- //////form for 3rd party text mgs///// -->
-
-  <h2 class = "headline">Right now, the ISS is over: </h2>
-  <hr class = "hrBottom2">
+      <div >
+        <img class = "apod" src = "/icons-pretty-pics/iss-radio.jpg">
+        <p class = "radio">Some ISS crew members make random, unscheduled, amateur radio voice 
+          contacts with earth-bound radio amateurs.  The crew's usual waking 
+          period is 0730 - 1930 UTC. The most common times to find a crew member 
+          making casual periods are about one hour after waking and before sleeping, 
+          when they have personal time. They're usually free most of the weekend, as well.  
+        </p>
+        
+        <!-- <br> -->
+        
+        <p id= "callsigns">Callsigns available for ISS use:   </p>
 
   <div >
-      <img class = "issMap" src = "/icons-pretty-pics/ground-track.png">
+      <img class = "issMap" src = "https://maps.locationiq.com/v2/staticmap?key=<%=GEOCODE%>&size=600x600&zoom=2&markers=<%=issPosition.lat%>,<%=issPosition.lon%>|icon:large-blue-cutout;&format=png">
   </div>
+  <div>
+      <ul class = "callsigns">
+        <li> Russian: RS0ISS</li>
+        <li>USA: NA1SS</li>
+        <li>European: DP0ISS, OR4ISS, IR0ISS</li>
+      </ul>
 
-  <!-- <div> -->
-  <!-- <canvas id='rotatingGlobe' width='400' height='400'
-  style='width: 400px; height: 400px; cursor: move;'></canvas> -->
-  <!-- </div> -->
+    <figcaption class = "radio-div" ><a href = " https://www.ariss.org/contact-the-iss.html" target = "_blank"> Learn More</a></figcaption>
+      
+  </div>
   
   </main>
 
 <footer>
   <a href = "/aboutus">Meet The Team</a>
-  <p> &copy 2020: Ashley Casimir, Kim Damalas, Bobby McPherson</p>
+  <p> &copy 2020: Ashley Casimir, Bobby McPherson, Kim Damalas </p>
 </footer>
 </body>
