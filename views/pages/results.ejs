@@ -80,8 +80,9 @@
     
     <h2 class = "headline">Right now, the ISS is over: </h2>
     
+    
     <div >
-      <img class = "issMap" src = "/icons-pretty-pics/ground-track.png">
+        <img class = "issMap" src = "https://maps.locationiq.com/v2/staticmap?key=<%=GEOCODE%>&size=600x600&zoom=2&markers=<%=issPosition.lat%>,<%=issPosition.lon%>|icon:large-blue-cutout;&format=png">
     </div>
     
     <h2 class = "headline">Info For Radio Users </h2>
@@ -99,9 +100,6 @@
         
         <p id= "callsigns">Callsigns available for ISS use:   </p>
 
-  <div >
-      <img class = "issMap" src = "https://maps.locationiq.com/v2/staticmap?key=<%=GEOCODE%>&size=600x600&zoom=2&markers=<%=issPosition.lat%>,<%=issPosition.lon%>|icon:large-blue-cutout;&format=png">
-  </div>
   <div>
       <ul class = "callsigns">
         <li> Russian: RS0ISS</li>
